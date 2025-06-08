@@ -24,107 +24,163 @@
         }
         
         body {
-            background-color: var(--branco);
+            background: linear-gradient(135deg, var(--branco) 0%, #e8f4f8 100%);
             color: var(--cinza-escuro);
             line-height: 1.6;
+            min-height: 100vh;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            position: relative;
-            min-height: 100vh;
         }
         
+        /* Header Principal */
         header {
             background: linear-gradient(135deg, var(--roxo) 0%, var(--ciano) 100%);
-            color: var(--branco);
-            padding: 25px;
-            border-radius: 15px;
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
             margin-bottom: 30px;
             text-align: center;
-            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.3);
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.3);
+            animation: slideDown 0.8s ease-out;
         }
         
         header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
+            font-size: 3rem;
+            margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
         header p {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             opacity: 0.95;
         }
         
-        .menu-aulas {
-            background-color: var(--azul-escuro);
-            position: sticky;
-            top: 20px;
-            z-index: 100;
-            padding: 20px;
-            border-radius: 15px;
+        /* Instruções Google Drive */
+        .instrucoes-drive {
+            background: linear-gradient(135deg, rgba(253, 203, 110, 0.1) 0%, rgba(253, 203, 110, 0.05) 100%);
+            border: 3px solid var(--amarelo);
+            border-radius: 20px;
+            padding: 30px;
             margin-bottom: 30px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            box-shadow: 0 6px 20px rgba(30, 30, 47, 0.4);
+            box-shadow: 0 8px 25px rgba(253, 203, 110, 0.3);
         }
         
-        .menu-aulas button {
-            background-color: var(--roxo);
-            color: var(--branco);
-            border: none;
-            padding: 12px 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            min-width: 80px;
-        }
-        
-        .menu-aulas button:hover {
-            background-color: var(--ciano);
-            transform: translateY(-3px);
-        }
-        
-        .menu-aulas button.active {
-            background-color: var(--ciano);
-            box-shadow: 0 0 15px rgba(0, 206, 201, 0.6);
-        }
-        
-        .aula {
-            display: none;
-            background-color: white;
-            border-radius: 15px;
-            padding: 35px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-        }
-        
-        .aula.active {
-            display: block;
-        }
-        
-        .aula-header {
+        .instrucoes-drive h3 {
+            color: var(--cinza-escuro);
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
         }
         
-        .aula-header h2 {
+        .drive-content {
+            display: grid;
+            gap: 25px;
+        }
+        
+        .drive-instrucao h4 {
             color: var(--roxo);
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 4px solid var(--amarelo);
-            display: inline-block;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
         }
         
-        .btn-estela {
-            background: linear-gradient(135deg, var(--roxo) 0%, var(--ciano) 100%);
+        .drive-instrucao p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .drive-steps h4 {
+            color: var(--roxo);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid var(--ciano);
+        }
+        
+        .step-number {
+            background: var(--ciano);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .step-content code {
+            background: var(--roxo);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .step-content a {
+            color: var(--ciano);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .step-content a:hover {
+            text-decoration: underline;
+        }
+        
+        .drive-alert {
+            background: var(--amarelo);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        /* Instruções de Drive em cada aula */
+        .drive-instrucao-aula {
+            background: linear-gradient(135deg, rgba(253, 203, 110, 0.15) 0%, rgba(253, 203, 110, 0.05) 100%);
+            border: 2px solid var(--amarelo);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .drive-instrucao-aula h4 {
+            color: var(--cinza-escuro);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .drive-instrucao-aula p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .btn-drive {
+            background: linear-gradient(135deg, var(--amarelo) 0%, #f39c12 100%);
             color: white;
             border: none;
             padding: 15px 25px;
@@ -132,168 +188,542 @@
             cursor: pointer;
             font-weight: 600;
             font-size: 1.1rem;
-            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+            box-shadow: 0 4px 15px rgba(253, 203, 110, 0.3);
+            margin: 5px;
+        }
+        
+        .btn-drive:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(253, 203, 110, 0.5);
+        }
+        
+        /* Menu de Aulas */
+        .menu-aulas {
+            background: var(--azul-escuro);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            box-shadow: 0 8px 25px rgba(30, 30, 47, 0.4);
+        }
+        
+        .menu-btn {
+            background: var(--roxo);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            min-width: 100px;
+        }
+        
+        .menu-btn:hover {
+            background: var(--ciano);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 206, 201, 0.4);
+        }
+        
+        .menu-btn.active {
+            background: var(--ciano);
+            box-shadow: 0 0 20px rgba(0, 206, 201, 0.6);
+        }
+        
+        /* Aulas */
+        .aula {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 3px solid transparent;
+            background-clip: padding-box;
+        }
+        
+        .aula.active {
+            display: block;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .aula-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid var(--amarelo);
+        }
+        
+        .aula-header h2 {
+            background: linear-gradient(135deg, var(--roxo), var(--ciano));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .btn-estela {
+            background: linear-gradient(135deg, var(--roxo) 0%, var(--ciano) 100%);
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(108, 92, 231, 0.3);
         }
         
         .btn-estela:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.5);
         }
         
-        .texto-estela {
-            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(0, 206, 201, 0.1) 100%);
+        .btn-estela.playing {
+            animation: pulse 1.5s infinite;
+        }
+        
+        /* Controles de Áudio */
+        .audio-controls {
+            background: rgba(108, 92, 231, 0.1);
             border: 2px solid var(--ciano);
             border-radius: 15px;
             padding: 25px;
             margin: 20px 0;
-            display: none;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-        
-        .texto-estela.ativo {
-            display: block;
-            animation: slideIn 0.5s ease-out;
-        }
-        
-        .texto-estela h4 {
-            color: var(--roxo);
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-        
-        .audio-controls {
             text-align: center;
-            margin: 20px 0;
-            padding: 15px;
-            background-color: rgba(108, 92, 231, 0.1);
-            border-radius: 10px;
+            display: none;
+            animation: fadeInUp 0.5s ease-out;
         }
         
-        .audio-controls button {
-            background-color: var(--roxo);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 5px;
-            font-weight: 500;
+        .audio-controls.ativo {
+            display: block;
         }
         
-        .audio-controls button:hover {
-            background-color: var(--ciano);
-        }
-        
-        .secao {
-            margin-bottom: 35px;
-        }
-        
-        .secao h3 {
+        .audio-controls h4 {
             color: var(--roxo);
             margin-bottom: 20px;
-            font-size: 1.6rem;
+            font-size: 1.2rem;
         }
         
-        .secao p {
-            margin-bottom: 18px;
-            font-size: 1.15rem;
-            line-height: 1.7;
-        }
-        
-        .destaque {
-            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(0, 206, 201, 0.1) 100%);
-            border-left: 5px solid var(--roxo);
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 8px;
-            font-weight: 500;
-        }
-        
-        .quiz {
-            background: linear-gradient(135deg, rgba(253, 203, 110, 0.2) 0%, rgba(253, 203, 110, 0.1) 100%);
-            border: 2px solid var(--amarelo);
-            padding: 25px;
-            border-radius: 12px;
-            margin: 30px 0;
-        }
-        
-        .quiz h4 {
-            color: var(--cinza-escuro);
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-        }
-        
-        .opcoes {
-            display: grid;
-            gap: 12px;
-            margin: 20px 0;
-        }
-        
-        .opcao {
-            background-color: white;
-            border: 2px solid #ddd;
-            padding: 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-        
-        .opcao:hover {
-            background-color: rgba(108, 92, 231, 0.1);
-            border-color: var(--roxo);
-            transform: translateX(5px);
-        }
-        
-        .opcao.correta {
-            background-color: rgba(46, 213, 115, 0.2);
-            border-color: #2ed573;
-        }
-        
-        .opcao.incorreta {
-            background-color: rgba(255, 71, 87, 0.2);
-            border-color: #ff4757;
-        }
-        
-        .navegacao {
+        .controles-principais {
             display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
-            padding-top: 25px;
-            border-top: 2px solid #eee;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
         }
         
-        .navegacao button {
-            background: linear-gradient(135deg, var(--roxo) 0%, var(--ciano) 100%);
+        .controles-principais button {
+            background: var(--roxo);
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 12px 20px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
             font-size: 1rem;
             transition: all 0.3s ease;
+            min-width: 120px;
         }
         
-        .navegacao button:hover {
+        .controles-principais button:hover {
+            background: var(--ciano);
+            transform: translateY(-2px);
+        }
+        
+        .controles-velocidade {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .controles-velocidade label {
+            font-weight: 600;
+            color: var(--cinza-escuro);
+            margin-right: 10px;
+        }
+        
+        .controles-velocidade button {
+            background: #ddd;
+            color: var(--cinza-escuro);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 60px;
+        }
+        
+        .controles-velocidade button:hover {
+            background: var(--roxo);
+            color: white;
+        }
+        
+        .controles-velocidade button.active {
+            background: var(--ciano);
+            color: white;
+            box-shadow: 0 0 10px rgba(0, 206, 201, 0.5);
+        }
+        
+        .status-audio {
+            margin-top: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--cinza-escuro);
+            border: 2px solid var(--amarelo);
+        }
+        
+        /* Modal para Templates */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .modal-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--ciano);
+        }
+        
+        .modal-header h3 {
+            color: var(--roxo);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .modal-body {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .modal-body h4 {
+            color: var(--roxo);
+            margin: 20px 0 10px 0;
+            font-size: 1.2rem;
+        }
+        
+        .modal-body p {
+            margin-bottom: 15px;
+        }
+        
+        .modal-body .template-section {
+            background: rgba(108, 92, 231, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid var(--ciano);
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: var(--roxo);
+        }
+        
+        .btn-copiar {
+            background: var(--ciano);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-copiar:hover {
+            background: #00a8a3;
+            transform: translateY(-2px);
+        }
+        
+        /* Seções de Conteúdo */
+        .secao {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.05) 0%, rgba(0, 206, 201, 0.05) 100%);
+            border-radius: 15px;
+            border-left: 5px solid var(--roxo);
+        }
+        
+        .secao h3 {
+            color: var(--roxo);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .secao p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .destaque {
+            background: linear-gradient(135deg, var(--amarelo) 0%, #f39c12 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(253, 203, 110, 0.4);
+        }
+        
+        .exemplo {
+            background: rgba(0, 206, 201, 0.1);
+            border: 2px solid var(--ciano);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+        
+        .exemplo h4 {
+            color: var(--ciano);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        /* Quiz Interativo */
+        .quiz {
+            background: linear-gradient(135deg, rgba(253, 203, 110, 0.2) 0%, rgba(253, 203, 110, 0.1) 100%);
+            border: 3px solid var(--amarelo);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+        }
+        
+        .quiz h4 {
+            color: var(--cinza-escuro);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        
+        .opcoes {
+            display: grid;
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .opcao {
+            background: white;
+            border: 3px solid #ddd;
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .opcao:hover {
+            background: rgba(108, 92, 231, 0.1);
+            border-color: var(--roxo);
+            transform: translateX(10px);
+        }
+        
+        .opcao.correta {
+            background: rgba(46, 213, 115, 0.2);
+            border-color: #2ed573;
+            color: #27ae60;
+        }
+        
+        .opcao.incorreta {
+            background: rgba(255, 71, 87, 0.2);
+            border-color: #ff4757;
+            color: #e74c3c;
+        }
+        
+        /* Campo de Resposta */
+        .campo-resposta {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(108, 92, 231, 0.05);
+            border-radius: 15px;
+            border: 2px solid var(--roxo);
+        }
+        
+        .campo-resposta h4 {
+            color: var(--roxo);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .campo-resposta textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+        
+        .campo-resposta textarea:focus {
+            outline: none;
+            border-color: var(--ciano);
+            box-shadow: 0 0 10px rgba(0, 206, 201, 0.3);
+        }
+        
+        .btn-salvar {
+            background: var(--ciano);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-salvar:hover {
+            background: #00a8a3;
+            transform: translateY(-2px);
+        }
+        
+        /* Desafio Prático */
+        .desafio {
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--roxo) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .desafio h4 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+        
+        .desafio p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+        
+        /* Navegação */
+        .navegacao {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 3px solid #eee;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(135deg, var(--roxo) 0%, var(--ciano) 100%);
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover:not(:disabled) {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
         }
         
-        .navegacao button:disabled {
+        .nav-btn:disabled {
             background: #ccc;
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
         }
         
-        @keyframes slideIn {
+        .progresso {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid var(--ciano);
+            font-weight: 600;
+            color: var(--cinza-escuro);
+        }
+        
+        /* Parabéns Final */
+        .parabens {
+            background: linear-gradient(135deg, var(--amarelo) 0%, #f39c12 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 25px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 15px 40px rgba(253, 203, 110, 0.4);
+        }
+        
+        .parabens h3 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .parabens p {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Animações */
+        @keyframes slideDown {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(-50px);
             }
             to {
                 opacity: 1;
@@ -301,23 +731,90 @@
             }
         }
         
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
         /* Responsividade */
         @media (max-width: 768px) {
             .container { padding: 15px; }
             header h1 { font-size: 2.2rem; }
             .aula { padding: 25px; }
-            .aula-header h2 { font-size: 1.8rem; }
-            .navegacao { flex-direction: column; gap: 15px; }
+            .aula-header h2 { font-size: 2rem; }
+            .navegacao { flex-direction: column; gap: 20px; }
+            .menu-aulas { gap: 10px; }
+            .menu-btn { padding: 12px 20px; min-width: 80px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Header Principal -->
         <header>
             <h1>🎮 Desenvolvimento de Jogos 2D</h1>
             <p>Aprenda a criar seu próprio jogo do zero com a GameCreators!</p>
         </header>
         
+        <!-- Instruções do Google Drive -->
+        <div class="instrucoes-drive">
+            <h3>📁 IMPORTANTE: Configure seu Google Drive</h3>
+            <div class="drive-content">
+                <div class="drive-instrucao">
+                    <h4>🎯 Por que usar o Google Drive?</h4>
+                    <p>Durante o curso, você criará anotações, documentos e arquivos que precisam ser salvos. Como esta é uma plataforma online, você precisa de um local para guardar seu progresso!</p>
+                </div>
+                
+                <div class="drive-steps">
+                    <h4>📋 Passo a passo para se preparar:</h4>
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <div class="step-content">
+                            <strong>Crie uma conta Google</strong> (se não tiver): <a href="https://accounts.google.com/signup" target="_blank">accounts.google.com/signup</a>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <div class="step-content">
+                            <strong>Acesse o Google Drive</strong>: <a href="https://drive.google.com" target="_blank">drive.google.com</a>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <div class="step-content">
+                            <strong>Crie uma pasta</strong> chamada <code>"Curso Jogos 2D - GameCreators"</code>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-number">4</span>
+                        <div class="step-content">
+                            <strong>Dentro da pasta, crie:</strong><br>
+                            • Pasta "Anotações das Aulas"<br>
+                            • Pasta "Meu Projeto de Jogo"<br>
+                            • Pasta "Exercícios e Desafios"
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="drive-alert">
+                    <strong>🚨 ATENÇÃO:</strong> A cada aula, você receberá instruções específicas sobre qual documento criar no Drive. Não perca essas orientações!
+                </div>
+            </div>
+        </div>
+        
+        <!-- Menu de Navegação das Aulas -->
         <nav class="menu-aulas">
             <button class="menu-btn active" onclick="irParaAula(1)">Aula 1</button>
             <button class="menu-btn" onclick="irParaAula(2)">Aula 2</button>
@@ -329,12 +826,32 @@
             <button class="menu-btn" onclick="irParaAula(8)">Aula 8</button>
         </nav>
         
+        <!-- Aula 1: Introdução aos Princípios de Design de Jogos -->
         <section class="aula active" id="aula1">
             <div class="aula-header">
                 <h2>🎯 Aula 1: Princípios de Design de Jogos</h2>
                 <button class="btn-estela" onclick="ouvirEstela(1)">
                     🔊 Ouvir explicação da Estela
                 </button>
+                
+                <div class="audio-controls" id="audio-controls-1">
+                    <h4>🎵 Controles de Áudio da Estela</h4>
+                    <div class="controles-principais">
+                        <button onclick="pausarAudio()">⏸️ Pausar</button>
+                        <button onclick="continuarAudio()">▶️ Continuar</button>
+                        <button onclick="pararAudio()">⏹️ Parar</button>
+                    </div>
+                    <div class="controles-velocidade">
+                        <label>Velocidade:</label>
+                        <button onclick="mudarVelocidade(0.5)">0.5x</button>
+                        <button onclick="mudarVelocidade(1)" class="active">1x</button>
+                        <button onclick="mudarVelocidade(1.5)">1.5x</button>
+                        <button onclick="mudarVelocidade(2)">2x</button>
+                    </div>
+                    <div class="status-audio" id="status-audio-1">
+                        🎤 Preparando explicação da Estela...
+                    </div>
+                </div>
                 
                 <div class="texto-estela" id="texto-estela-1">
                     <h4>🤖 Estela está explicando:</h4>
@@ -345,54 +862,90 @@
                     <p>Vamos começar entendendo os 4 pilares fundamentais: <strong>Mecânica</strong> (as regras do seu jogo), <strong>Estética</strong> (como seu jogo se apresenta visualmente e sonoramente), <strong>Tecnologia</strong> (as ferramentas que você vai usar), e <strong>História</strong> (que dá significado às ações do jogador).</p>
                     
                     <p>O conceito mais importante que quero que você entenda hoje é o "fluxo" - aquele estado onde o jogador fica completamente imerso no jogo, perdendo a noção do tempo. Isso acontece quando há um equilíbrio perfeito entre desafio e habilidade.</p>
-                    
-                    <div class="audio-controls">
-                        <button onclick="pararAudio()">⏹️ Parar</button>
-                        <button onclick="pausarAudio()">⏸️ Pausar</button>
-                        <button onclick="continuarAudio()">▶️ Continuar</button>
-                        <br>
-                        <label>Velocidade: </label>
-                        <button onclick="mudarVelocidade(0.5)">0.5x</button>
-                        <button onclick="mudarVelocidade(1)" style="background-color: var(--ciano);">1x</button>
-                        <button onclick="mudarVelocidade(1.5)">1.5x</button>
-                        <button onclick="mudarVelocidade(2)">2x</button>
-                    </div>
                 </div>
             </div>
             
             <div class="secao">
                 <h3>🎮 O que é Design de Jogos?</h3>
-                <p><strong>Imagine o design de jogos como uma receita mágica!</strong> Você mistura diversão, desafio e recompensa para criar uma experiência viciante.</p>
+                <p><strong>Imagine o design de jogos como uma receita mágica!</strong> Você é o chef que mistura ingredientes especiais: diversão, desafio e recompensa para criar uma experiência que vicia de forma positiva.</p>
                 
                 <div class="destaque">
-                    <p>💡 <strong>Regra de Ouro:</strong> Um bom jogo equilibra desafio e habilidade. Muito fácil = tédio. Muito difícil = frustração. O ponto doce é o <strong>FLUXO</strong>!</p>
+                    💡 <strong>Regra de Ouro:</strong> Um bom jogo equilibra desafio e habilidade. Muito fácil = tédio. Muito difícil = frustração. O ponto doce é o <strong>FLUXO</strong>!
+                </div>
+                
+                <div class="exemplo">
+                    <h4>🎪 Exemplo Prático: Circo do Equilíbrio</h4>
+                    <p>Pense num equilibrista no circo. Se a corda estiver no chão (muito fácil), ninguém se impressiona. Se estiver a 50 metros (muito difícil), o público fica ansioso demais. Mas a 3 metros? <strong>Todo mundo prende a respiração!</strong></p>
                 </div>
             </div>
             
             <div class="quiz">
-                <h4>📝 Mini Quiz: Teste seu conhecimento!</h4>
+                <h4>📝 Mini Quiz: Teste seu entendimento!</h4>
                 <p>Qual elemento é essencial para manter o jogador no estado de "fluxo"?</p>
                 
                 <div class="opcoes">
-                    <div class="opcao" onclick="responder(this, false)">Gráficos perfeitos</div>
-                    <div class="opcao" onclick="responder(this, true)">Equilíbrio entre desafio e habilidade</div>
-                    <div class="opcao" onclick="responder(this, false)">História complexa</div>
-                    <div class="opcao" onclick="responder(this, false)">Muitos personagens</div>
+                    <div class="opcao" onclick="responder(this, false)">🎨 Gráficos perfeitos</div>
+                    <div class="opcao" onclick="responder(this, true)">⚖️ Equilíbrio entre desafio e habilidade</div>
+                    <div class="opcao" onclick="responder(this, false)">📚 História complexa</div>
+                    <div class="opcao" onclick="responder(this, false)">👥 Muitos personagens</div>
                 </div>
             </div>
             
+            <div class="campo-resposta">
+                <h4>✍️ Reflexão Pessoal:</h4>
+                <textarea placeholder="Pense em um jogo que você adora jogar. O que faz você voltar sempre? Escreva aqui sua reflexão..."></textarea>
+                <button class="btn-salvar" onclick="salvarResposta(this)">💾 Salvar minha resposta</button>
+            </div>
+            
+            <div class="drive-instrucao-aula">
+                <h4>📁 TAREFA NO GOOGLE DRIVE - Aula 1</h4>
+                <p><strong>Agora é hora de organizar suas ideias no Google Drive!</strong></p>
+                <p>1. <strong>Abra seu Google Drive</strong> na pasta "Anotações das Aulas"<br>
+                2. <strong>Crie um documento</strong> chamado <code>"Aula 1 - Princípios de Design"</code><br>
+                3. <strong>Cole sua reflexão</strong> sobre o jogo que você adora<br>
+                4. <strong>Adicione suas descobertas</strong> do desafio prático abaixo</p>
+                <a href="https://drive.google.com" target="_blank" class="btn-drive">📁 Abrir Google Drive</a>
+                <button class="btn-drive" onclick="mostrarTemplateAula1()">📋 Ver Template da Aula 1</button>
+            </div>
+            
+            <div class="desafio">
+                <h4>🚀 Desafio Prático da Aula 1</h4>
+                <p>🎯 <strong>Missão:</strong> Escolha um jogo simples (como Pac-Man ou Tetris) e identifique 3 elementos que criam o "fluxo". Anote suas descobertas!</p>
+            </div>
+            
             <div class="navegacao">
-                <button disabled>⬅️ Voltar</button>
-                <button onclick="proximaAula()">Próxima aula ➡️</button>
+                <button class="nav-btn" disabled>⬅️ Aula Anterior</button>
+                <div class="progresso">Aula 1 de 8</div>
+                <button class="nav-btn" onclick="proximaAula()">Próxima Aula ➡️</button>
             </div>
         </section>
         
+        <!-- Aula 2: Tipos de jogos e gêneros -->
         <section class="aula" id="aula2">
             <div class="aula-header">
                 <h2>🎲 Aula 2: Gêneros de Jogos 2D</h2>
                 <button class="btn-estela" onclick="ouvirEstela(2)">
                     🔊 Ouvir explicação da Estela
                 </button>
+                
+                <div class="audio-controls" id="audio-controls-2">
+                    <h4>🎵 Controles de Áudio da Estela</h4>
+                    <div class="controles-principais">
+                        <button onclick="pausarAudio()">⏸️ Pausar</button>
+                        <button onclick="continuarAudio()">▶️ Continuar</button>
+                        <button onclick="pararAudio()">⏹️ Parar</button>
+                    </div>
+                    <div class="controles-velocidade">
+                        <label>Velocidade:</label>
+                        <button onclick="mudarVelocidade(0.5)">0.5x</button>
+                        <button onclick="mudarVelocidade(1)" class="active">1x</button>
+                        <button onclick="mudarVelocidade(1.5)">1.5x</button>
+                        <button onclick="mudarVelocidade(2)">2x</button>
+                    </div>
+                    <div class="status-audio" id="status-audio-2">
+                        🎤 Preparando explicação da Estela...
+                    </div>
+                </div>
                 
                 <div class="texto-estela" id="texto-estela-2">
                     <h4>🤖 Estela está explicando:</h4>
@@ -401,47 +954,713 @@
                     <p>Cada gênero é como um sabor diferente de sorvete - alguns são clássicos que nunca saem de moda, outros são inovações que criam tendências! Jogos de plataforma focam em movimentação precisa, puzzles estimulam sua mente, RPGs permitem evoluir e crescer, e shoot'em ups testam seus reflexos.</p>
                     
                     <p>A dica de ouro é escolher um gênero que você realmente ama jogar, porque essa paixão vai te motivar durante todo o desenvolvimento. Lembre-se: você pode misturar gêneros para criar algo único!</p>
-                    
-                    <div class="audio-controls">
-                        <button onclick="pararAudio()">⏹️ Parar</button>
-                        <button onclick="pausarAudio()">⏸️ Pausar</button>
-                        <button onclick="continuarAudio()">▶️ Continuar</button>
-                    </div>
                 </div>
             </div>
             
             <div class="secao">
                 <h3>🌟 Universo de Possibilidades</h3>
-                <p><strong>Cada gênero é como um sabor diferente de sorvete!</strong> Alguns são clássicos, outros são inovadores. Vamos descobrir qual combina com você.</p>
-            </div>
-            
-            <div class="quiz">
-                <h4>📝 Quiz: Qual é seu gênero?</h4>
-                <p>Qual gênero é perfeito para quem ama resolver problemas lógicos?</p>
+                <p><strong>Cada gênero é como um sabor diferente de sorvete!</strong> Alguns são clássicos atemporais, outros são inovações que criam tendências. Vamos descobrir qual combina com você.</p>
                 
-                <div class="opcoes">
-                    <div class="opcao" onclick="responder(this, false)">Plataforma</div>
-                    <div class="opcao" onclick="responder(this, true)">Puzzle</div>
-                    <div class="opcao" onclick="responder(this, false)">Shooter</div>
-                    <div class="opcao" onclick="responder(this, false)">RPG</div>
+                <div class="exemplo">
+                    <h4>🎮 Os 5 Grandes Gêneros 2D:</h4>
+                    <p><strong>🏃 Plataforma:</strong> Mario, Sonic - foco na movimentação precisa</p>
+                    <p><strong>🧩 Puzzle:</strong> Tetris, Candy Crush - estimula o raciocínio</p>
+                    <p><strong>⚔️ RPG:</strong> Final Fantasy, Pokémon - evolução e narrativa</p>
+                    <p><strong>🔫 Shoot'em Up:</strong> Space Invaders - reflexos e precisão</p>
+                    <p><strong>🏁 Corrida 2D:</strong> OutRun - velocidade e adrenalina</p>
+                </div>
+                
+                <div class="destaque">
+                    🎯 <strong>Dica de Ouro:</strong> Escolha um gênero que você AMA jogar! Sua paixão será o combustível para superar os desafios do desenvolvimento.
                 </div>
             </div>
             
+            <div class="quiz">
+                <h4>📝 Quiz: Qual é seu gênero ideal?</h4>
+                <p>Qual gênero é perfeito para quem ama resolver problemas lógicos?</p>
+                
+                <div class="opcoes">
+                    <div class="opcao" onclick="responder(this, false)">🏃 Plataforma</div>
+                    <div class="opcao" onclick="responder(this, true)">🧩 Puzzle</div>
+                    <div class="opcao" onclick="responder(this, false)">🔫 Shooter</div>
+                    <div class="opcao" onclick="responder(this, false)">⚔️ RPG</div>
+                </div>
+            </div>
+            
+            <div class="campo-resposta">
+                <h4>✍️ Sua Escolha:</h4>
+                <textarea placeholder="Qual gênero mais te atrai para seu primeiro jogo? Por quê? Descreva a experiência que você quer criar..."></textarea>
+                <button class="btn-salvar" onclick="salvarResposta(this)">💾 Salvar minha escolha</button>
+            </div>
+            
+            <div class="drive-instrucao-aula">
+                <h4>📁 TAREFA NO GOOGLE DRIVE - Aula 2</h4>
+                <p><strong>Vamos documentar sua escolha de gênero!</strong></p>
+                <p>1. <strong>No Google Drive</strong>, abra a pasta "Meu Projeto de Jogo"<br>
+                2. <strong>Crie um documento</strong> chamado <code>"Meu Jogo - Definições Básicas"</code><br>
+                3. <strong>Anote:</strong> Gênero escolhido, por que escolheu, jogos de referência<br>
+                4. <strong>Cole sua resposta</strong> sobre a experiência que quer criar</p>
+                <a href="https://drive.google.com" target="_blank" class="btn-drive">📁 Abrir Google Drive</a>
+                <button class="btn-drive" onclick="mostrarTemplateAula2()">📋 Ver Template da Aula 2</button>
+            </div>
+            
+            <div class="desafio">
+                <h4>🚀 Desafio Prático da Aula 2</h4>
+                <p>🎯 <strong>Missão:</strong> Jogue 3 jogos de gêneros diferentes por 10 minutos cada. Anote: qual te envolveu mais e por quê?</p>
+            </div>
+            
             <div class="navegacao">
-                <button onclick="aulaAnterior()">⬅️ Voltar</button>
-                <button onclick="proximaAula()">Próxima aula ➡️</button>
+                <button class="nav-btn" onclick="aulaAnterior()">⬅️ Aula Anterior</button>
+                <div class="progresso">Aula 2 de 8</div>
+                <button class="nav-btn" onclick="proximaAula()">Próxima Aula ➡️</button>
             </div>
         </section>
         
-        <!-- Continuar com as outras aulas... Para economizar espaço, incluindo apenas 2 aulas -->
+        <!-- Aula 3: Mecânica e dinâmica de jogos (MDA) -->
+        <section class="aula" id="aula3">
+            <div class="aula-header">
+                <h2>⚡ Aula 3: Framework MDA</h2>
+                <button class="btn-estela" onclick="ouvirEstela(3)">
+                    🔊 Ouvir explicação da Estela
+                </button>
+                
+                <div class="audio-controls" id="audio-controls-3">
+                    <h4>🎵 Controles de Áudio da Estela</h4>
+                    <div class="controles-principais">
+                        <button onclick="pausarAudio()">⏸️ Pausar</button>
+                        <button onclick="continuarAudio()">▶️ Continuar</button>
+                        <button onclick="pararAudio()">⏹️ Parar</button>
+                    </div>
+                    <div class="controles-velocidade">
+                        <label>Velocidade:</label>
+                        <button onclick="mudarVelocidade(0.5)">0.5x</button>
+                        <button onclick="mudarVelocidade(1)" class="active">1x</button>
+                        <button onclick="mudarVelocidade(1.5)">1.5x</button>
+                        <button onclick="mudarVelocidade(2)">2x</button>
+                    </div>
+                    <div class="status-audio" id="status-audio-3">
+                        🎤 Preparando explicação da Estela...
+                    </div>
+                </div>
+                
+                <div class="texto-estela" id="texto-estela-3">
+                    <h4>🤖 Estela está explicando:</h4>
+                    <p>Agora vamos mergulhar no framework MDA - Mecânica, Dinâmica e Estética! Imagine que você está construindo uma máquina de diversão incrível.</p>
+                    
+                    <p>As engrenagens são suas mecânicas - as regras que você cria. O movimento da máquina é a dinâmica - como os jogadores se comportam com suas regras. E a alegria que a máquina causa é a estética - as emoções que despertamos!</p>
+                    
+                    <p>É um processo fascinante: você cria mecânicas simples, mas quando os jogadores interagem com elas, surgem comportamentos complexos e inesperados que geram emoções poderosas!</p>
+                </div>
+            </div>
+            
+            <div class="secao">
+                <h3>🔄 O Triângulo Mágico MDA</h3>
+                <p><strong>Imagine que você está construindo uma máquina de diversão incrível!</strong> MDA é a fórmula secreta: Mecânica + Dinâmica + Estética = Jogo Perfeito.</p>
+                
+                <div class="exemplo">
+                    <h4>🛠️ Decifrando o MDA:</h4>
+                    <p><strong>🔧 MECÂNICA:</strong> As engrenagens (regras do jogo)</p>
+                    <p><strong>⚡ DINÂMICA:</strong> O movimento da máquina (como jogadores se comportam)</p>
+                    <p><strong>🎨 ESTÉTICA:</strong> A alegria que causa (emoções despertadas)</p>
+                </div>
+                
+                <div class="destaque">
+                    💡 <strong>Processo Fascinante:</strong> Você cria mecânicas simples, mas quando jogadores interagem, surgem comportamentos complexos que geram emoções poderosas!
+                </div>
+                
+                <div class="exemplo">
+                    <h4>🎪 Exemplo: Pac-Man decodificado</h4>
+                    <p><strong>Mecânica:</strong> Mover, comer pontos, fugir fantasmas</p>
+                    <p><strong>Dinâmica:</strong> Jogador planeja rotas, toma decisões rápidas</p>
+                    <p><strong>Estética:</strong> Tensão, alívio, sensação de perseguição</p>
+                </div>
+            </div>
+            
+            <div class="quiz">
+                <h4>📝 Quiz: Dominando o MDA</h4>
+                <p>No framework MDA, o que representa a "Dinâmica"?</p>
+                
+                <div class="opcoes">
+                    <div class="opcao" onclick="responder(this, false)">🔧 As regras do jogo</div>
+                    <div class="opcao" onclick="responder(this, true)">⚡ Como os jogadores se comportam</div>
+                    <div class="opcao" onclick="responder(this, false)">🎨 As emoções despertadas</div>
+                    <div class="opcao" onclick="responder(this, false)">🎮 Os controles do jogo</div>
+                </div>
+            </div>
+            
+            <div class="campo-resposta">
+                <h4>✍️ Analisando seu Jogo Favorito:</h4>
+                <textarea placeholder="Escolha um jogo que você ama e descreva suas Mecânicas, Dinâmicas e Estética. Como elas se conectam?"></textarea>
+                <button class="btn-salvar" onclick="salvarResposta(this)">💾 Salvar análise MDA</button>
+            </div>
+            
+            <div class="drive-instrucao-aula">
+                <h4>📁 TAREFA NO GOOGLE DRIVE - Aula 3</h4>
+                <p><strong>Hora de aplicar o MDA ao seu projeto!</strong></p>
+                <p>1. <strong>Abra o documento</strong> "Meu Jogo - Definições Básicas" no Drive<br>
+                2. <strong>Adicione uma seção</strong> chamada <code>"Framework MDA do Meu Jogo"</code><br>
+                3. <strong>Defina 3-5 mecânicas</strong> básicas do seu jogo<br>
+                4. <strong>Descreva a dinâmica</strong> esperada dos jogadores<br>
+                5. <strong>Anote a estética</strong> (emoções) que quer despertar</p>
+                <a href="https://drive.google.com" target="_blank" class="btn-drive">📁 Abrir Google Drive</a>
+                <button class="btn-drive" onclick="mostrarTemplateAula3()">📋 Ver Template MDA</button>
+            </div>
+            
+            <div class="desafio">
+                <h4>🚀 Desafio Prático da Aula 3</h4>
+                <p>🎯 <strong>Missão:</strong> Projete no papel as mecânicas básicas do SEU jogo. Apenas 3-5 regras simples. Pense: que emoção quero despertar?</p>
+            </div>
+            
+            <div class="navegacao">
+                <button class="nav-btn" onclick="aulaAnterior()">⬅️ Aula Anterior</button>
+                <div class="progresso">Aula 3 de 8</div>
+                <button class="nav-btn" onclick="proximaAula()">Próxima Aula ➡️</button>
+            </div>
+        </section>
         
+        <!-- Aula 4: Narrativa e narrativa em jogos -->
+        <section class="aula" id="aula4">
+            <div class="aula-header">
+                <h2>📚 Aula 4: Narrativa que Envolve</h2>
+                <button class="btn-estela" onclick="ouvirEstela(4)">
+                    🔊 Ouvir explicação da Estela
+                </button>
+                
+                <div class="audio-controls" id="audio-controls-4">
+                    <h4>🎵 Controles de Áudio da Estela</h4>
+                    <div class="controles-principais">
+                        <button onclick="pausarAudio()">⏸️ Pausar</button>
+                        <button onclick="continuarAudio()">▶️ Continuar</button>
+                        <button onclick="pararAudio()">⏹️ Parar</button>
+                    </div>
+                    <div class="controles-velocidade">
+                        <label>Velocidade:</label>
+                        <button onclick="mudarVelocidade(0.5)">0.5x</button>
+                        <button onclick="mudarVelocidade(1)" class="active">1x</button>
+                        <button onclick="mudarVelocidade(1.5)">1.5x</button>
+                        <button onclick="mudarVelocidade(2)">2x</button>
+                    </div>
+                    <div class="status-audio" id="status-audio-4">
+                        🎤 Preparando explicação da Estela...
+                    </div>
+                </div>
+                
+                <div class="texto-estela" id="texto-estela-4">
+                    <h4>🤖 Estela está explicando:</h4>
+                    <p>Chegou a hora de falarmos sobre narrativa! A narrativa é o tempero secreto que transforma mecânicas em experiências emocionais profundas. Não precisa ser uma história complexa - precisa ser envolvente!</p>
+                    
+                    <p>O segredo é que uma premissa simples bem executada sempre vence uma trama complexa mal contada. Pense no Pac-Man - a história é basicamente 'fantasmas perseguem círculo amarelo que come pontos', mas que experiência épica isso se tornou!</p>
+                </div>
+            </div>
+            
+            <div class="secao">
+                <h3>🎭 O Poder das Histórias</h3>
+                <p><strong>A narrativa é o tempero secreto que transforma mecânicas em experiências emocionais!</strong> Não precisa ser complexa, precisa ser envolvente.</p>
+                
+                <div class="destaque">
+                    🎯 <strong>Segredo Revelado:</strong> Uma premissa simples bem executada SEMPRE vence uma trama complexa mal contada!
+                </div>
+                
+                <div class="exemplo">
+                    <h4>🎪 Exemplo Genial: Pac-Man</h4>
+                    <p>História: "Fantasmas perseguem círculo amarelo que come pontos"</p>
+                    <p><strong>Resultado:</strong> Uma das narrativas mais icônicas dos games!</p>
+                    <p><strong>Por quê funciona:</strong> Clara, visual, universal (todos entendem perseguição)</p>
+                </div>
+                
+                <div class="exemplo">
+                    <h4>🍰 3 Camadas da Narrativa em Jogos:</h4>
+                    <p><strong>🎯 Premissa:</strong> A ideia central em uma frase</p>
+                    <p><strong>🎭 Contexto:</strong> O mundo onde acontece</p>
+                    <p><strong>⚡ Conflito:</strong> O que cria tensão e drive o jogador</p>
+                </div>
+            </div>
+            
+            <div class="quiz">
+                <h4>📝 Quiz: Narrativa Eficaz</h4>
+                <p>Qual é o elemento mais importante numa narrativa de jogo?</p>
+                
+                <div class="opcoes">
+                    <div class="opcao" onclick="responder(this, false)">📖 Muitos diálogos</div>
+                    <div class="opcao" onclick="responder(this, true)">🎯 Premissa clara e envolvente</div>
+                    <div class="opcao" onclick="responder(this, false)">🎬 Cutscenes longas</div>
+                    <div class="opcao" onclick="responder(this, false)">📚 Lore complexo</div>
+                </div>
+            </div>
+            
+            <div class="campo-resposta">
+                <h4>✍️ Criando Sua Premissa:</h4>
+                <textarea placeholder="Crie a premissa do SEU jogo em UMA frase. Exemplo: 'Robô perdido busca casa em mundo pós-apocalíptico' ou 'Gato ninja salva peixes de piratas espaciais'"></textarea>
+                <button class="btn-salvar" onclick="salvarResposta(this)">💾 Salvar minha premissa</button>
+            </div>
+            
+            <div class="drive-instrucao-aula">
+                <h4>📁 TAREFA NO GOOGLE DRIVE - Aula 4</h4>
+                <p><strong>Vamos criar a narrativa do seu jogo!</strong></p>
+                <p>1. <strong>No seu documento</strong> "Meu Jogo - Definições Básicas"<br>
+                2. <strong>Adicione seção</strong> <code>"Narrativa e História"</code><br>
+                3. <strong>Cole sua premissa</strong> (frase-resumo do jogo)<br>
+                4. <strong>Desenvolva o contexto:</strong> Onde? Quando? Como é o mundo?<br>
+                5. <strong>Defina o conflito:</strong> Qual o problema principal?</p>
+                <a href="https://drive.google.com" target="_blank" class="btn-drive">📁 Abrir Google Drive</a>
+                <button class="btn-drive" onclick="mostrarTemplateAula4()">📋 Ver Template de Narrativa</button>
+            </div>
+            
+            <div class="desafio">
+                <h4>🚀 Desafio Prático da Aula 4</h4>
+                <p>🎯 <strong>Missão:</strong> Desenvolva o CONTEXTO do seu jogo. Onde acontece? Quando? Desenhe ou descreva o mundo em poucas palavras.</p>
+            </div>
+            
+            <div class="navegacao">
+                <button class="nav-btn" onclick="aulaAnterior()">⬅️ Aula Anterior</button>
+                <div class="progresso">Aula 4 de 8</div>
+                <button class="nav-btn" onclick="proximaAula()">Próxima Aula ➡️</button>
+            </div>
+        </section>
+        
+        <!-- Aula 5: Fundamentos do design de personagens -->
+        <section class="aula" id="aula5">
+            <div class="aula-header">
+                <h2>🎨 Aula 5: Personagens Inesquecíveis</h2>
+                <button class="btn-estela" onclick="ouvirEstela(5)">
+                    🔊 Ouvir explicação da Estela
+                </button>
+                
+                <div class="audio-controls" id="audio-controls-5">
+                    <h4>🎵 Controles de Áudio da Estela</h4>
+                    <div class="controles-principais">
+                        <button onclick="pausarAudio()">⏸️ Pausar</button>
+                        <button onclick="continuarAudio()">▶️ Continuar</button>
+                        <button onclick="pararAudio()">⏹️ Parar</button>
+                    </div>
+                    <div class="controles-velocidade">
+                        <label>Velocidade:</label>
+                        <button onclick="mudarVelocidade(0.5)">0.5x</button>
+                        <button onclick="mudarVelocidade(1)" class="active">1x</button>
+                        <button onclick="mudarVelocidade(1.5)">1.5x</button>
+                        <button onclick="mudarVelocidade(2)">2x</button>
+                    </div>
+                    <div class="status-audio" id="status-audio-5">
+                        🎤 Preparando explicação da Estela...
+                    </div>
+                </div>
+                
+                <div class="texto-estela" id="texto-estela-5">
+                    <h4>🤖 Estela está explicando:</h4>
+                    <p>Vamos falar sobre personagens! Esta é uma das partes mais divertidas do desenvolvimento de jogos, porque é onde damos vida às nossas criações!</p>
+                    
+                    <p>Um personagem memorável combina três elementos: visual marcante, personalidade única e funcionalidade perfeita no jogo. A silhueta é super importante - Mario é reconhecível mesmo como uma sombra por causa do chapéu e bigode!</p>
+                </div>
+            </div>
+            
+            <div class="secao">
+                <h3>👤 Criando Ícones</h3>
+                <p><strong>Um personagem marcante é como uma pessoa que você nunca esquece!</strong> Combina visual único, personalidade forte e funciona perfeitamente no jogo.</p>
+                
+                <div class="exemplo">
+                    <h4>🎯 A Fórmula do Personagem Perfeito:</h4>
+                    <p><strong>👁️ SILHUETA:</strong> Reconhecível mesmo como sombra</p>
+                    <p><strong>🎭 PERSONALIDADE:</strong> Traços únicos e marcantes</p>
+                    <p><strong>⚡ FUNCIONALIDADE:</strong> Serve perfeitamente ao gameplay</p>
+                </div>
+                
+                <div class="destaque">
+                    💡 <strong>Teste da Silhueta:</strong> Mario é reconhecível só pelo chapéu e bigode! Sonic pela pose correndo. E o SEU personagem?
+                </div>
+                
+                <div class="exemplo">
+                    <h4>🎪 Exemplos Geniais:</h4>
+                    <p><strong>🍄 Mario:</strong> Bigode = amigável, chapéu = trabalhador, macacão = prático</p>
+                    <p><strong>💙 Sonic:</strong> Azul = velocidade, espinhos = atitude rebelde</p>
+                    <p><strong>👻 Pac-Man:</strong> Círculo = simplicidade, boca = ação (comer)</p>
+                </div>
+            </div>
+            
+            <div class="quiz">
+                <h4>📝 Quiz: Design de Personagem</h4>
+                <p>Qual é o teste mais importante para um personagem 2D?</p>
+                
+                <div class="opcoes">
+                    <div class="opcao" onclick="responder(this, false)">🎨 Ter muitas cores</div>
+                    <div class="opcao" onclick="responder(this, true)">👤 Silhueta reconhecível</div>
+                    <div class="opcao" onclick="responder(this, false)">📚 História complexa</div>
+                    <div class="opcao" onclick="responder(this, false)">💪 Muitos poderes</div>
+                </div>
+            </div>
+            
+            <div class="campo-resposta">
+                <h4>✍️ Desenhando seu Protagonista:</h4>
+                <textarea placeholder="Descreva seu personagem principal: Como ele é fisicamente? Que personalidade tem? Qual sua cor principal? Que elementos o tornam único?"></textarea>
+                <button class="btn-salvar" onclick="salvarResposta(this)">💾 Salvar personagem</button>
+            </div>
+            
+            <div class="drive-instrucao-aula">
+                <h4>📁 TAREFA NO GOOGLE DRIVE - Aula 5</h4>
+                <p><strong>Hora de criar seu personagem principal!</strong></p>
+                <p>1. <strong>No Google Drive</strong>, pasta "Meu Projeto de Jogo"<br>
+                2. <strong>Crie documento</strong> <code>"Personagens do Meu Jogo"</code><br>
+                3. <strong>Descreva o protagonista:</strong> aparência, personalidade, habilidades<br>
+                4. <strong>Desenhe ou encontre referências</strong> visuais (pode usar Google Imagens)<br>
+                5. <strong>Teste da silhueta:</strong> descreva como seria só o contorno</p>
+                <a href="https://drive.google.com" target="_blank" class="btn-drive">📁 Abrir Google Drive</a>
+                <button class="btn-drive" onclick="mostrarTemplateAula5()">📋 Ver Template de Personagem</button>
+            </div>
+            
+            <div class="desafio">
+                <h4>🚀 Desafio Prático da Aula 5</h4>
+                <p>🎯 <strong>Missão:</strong> Desenhe a SILHUETA do seu personagem. Só o contorno! Mostre para alguém: conseguem adivinhar o que é?</p>
+            </div>
+            
+            <div class="navegacao">
+                <button class="nav-btn" onclick="aulaAnterior()">⬅️ Aula Anterior</button>
+                <div class="progresso">Aula 5 de 8</div>
+                <button class="nav-btn" onclick="proximaAula()">Próxima Aula ➡️</button>
+            </div>
+        </section>
+        
+        <!-- Aula 6: Design de ambiente e nível (level design) -->
+        <section class="aula" id="aula6">
+            <div class="aula-header">
+                <h2>🏗️ Aula 6: Criando Níveis Épicos</h2>
+                <button class="btn-estela" onclick="ouvirEstela(6)">
+                    🔊 Ouvir explicação da Estela
+                </button>
+                
+                <div class="audio-controls" id="audio-controls-6">
+                    <h4>🎵 Controles de Áudio da Estela</h4>
+                    <div class="controles-principais">
+                        <button onclick="pausarAudio()">⏸️ Pausar</button>
+                        <button onclick="continuarAudio()">▶️ Continuar</button>
+                        <button onclick="pararAudio()">⏹️ Parar</button>
+                    </div>
+                    <div class="controles-velocidade">
+                        <label>Velocidade:</label>
+                        <button onclick="mudarVelocidade(0.5)">0.5x</button>
+                        <button onclick="mudarVelocidade(1)" class="active">1x</button>
+                        <button onclick="mudarVelocidade(1.5)">1.5x</button>
+                        <button onclick="mudarVelocidade(2)">2x</button>
+                    </div>
+                    <div class="status-audio" id="status-audio-6">
+                        🎤 Preparando explicação da Estela...
+                    </div>
+                </div>
+                
+                <div class="texto-estela" id="texto-estela-6">
+                    <h4>🤖 Estela está explicando:</h4>
+                    <p>Level design é onde a mágica realmente acontece! É aqui que todas as suas mecânicas e ideias se encontram em um espaço concreto onde o jogador vai jogar.</p>
+                    
+                    <p>Um bom level design é como uma sinfonia - tem ritmo, com momentos de tensão e relaxamento. Tem progressão, onde o jogador vai gradualmente enfrentando desafios maiores. E tem orientação, guiando o jogador sem ser óbvio demais.</p>
+                </div>
+            </div>
+            
+            <div class="secao">
+                <h3>🎢 Level Design = Montanha Russa</h3>
+                <p><strong>Um bom nível é como uma montanha russa bem projetada!</strong> Tem subidas (tensão), descidas (alívio), e curvas (surpresas).</p>
+                
+                <div class="exemplo">
+                    <h4>🎼 Os 4 Ritmos do Level Design:</h4>
+                    <p><strong>📈 INTRODUÇÃO:</strong> Apresenta mecânicas sem pressão</p>
+                    <p><strong>⚡ DESENVOLVIMENTO:</strong> Aumenta a complexidade gradualmente</p>
+                    <p><strong>🔥 CLÍMAX:</strong> Momento de maior desafio</p>
+                    <p><strong>🏁 CONCLUSÃO:</strong> Relaxamento e recompensa</p>
+                </div>
+                
+                <div class="destaque">
+                    🎯 <strong>Regra de Ouro:</strong> O jogador deve sempre saber para onde ir, mesmo que não saiba como chegar lá!
+                </div>
+                
+                <div class="exemplo">
+                    <h4>🧭 Guiando sem Ser Óbvio:</h4>
+                    <p><strong>💡 LUZ:</strong> Áreas importantes são mais iluminadas</p>
+                    <p><strong>🎨 COR:</strong> Elementos interativos têm cores únicas</p>
+                    <p><strong>➡️ LINHAS:</strong> Plataformas e cenário "apontam" o caminho</p>
+                    <p><strong>📍 CONTRASTE:</strong> Saídas se destacam do fundo</p>
+                </div>
+            </div>
+            
+            <div class="quiz">
+                <h4>📝 Quiz: Level Design Eficaz</h4>
+                <p>Qual é o princípio mais importante no level design?</p>
+                
+                <div class="opcoes">
+                    <div class="opcao" onclick="responder(this, false)">🎨 Cenários bonitos</div>
+                    <div class="opcao" onclick="responder(this, true)">🧭 Orientação clara do jogador</div>
+                    <div class="opcao" onclick="responder(this, false)">💎 Muitos coletáveis</div>
+                    <div class="opcao" onclick="responder(this, false)">👹 Inimigos difíceis</div>
+                </div>
+            </div>
+            
+            <div class="campo-resposta">
+                <h4>✍️ Planejando seu Primeiro Nível:</h4>
+                <textarea placeholder="Descreva seu primeiro nível: Como o jogador começa? Qual o objetivo? Que obstáculos enfrentará? Como termina de forma satisfatória?"></textarea>
+                <button class="btn-salvar" onclick="salvarResposta(this)">💾 Salvar design do nível</button>
+            </div>
+            
+            <div class="drive-instrucao-aula">
+                <h4>📁 TAREFA NO GOOGLE DRIVE - Aula 6</h4>
+                <p><strong>Vamos projetar os níveis do seu jogo!</strong></p>
+                <p>1. <strong>Crie documento</strong> <code>"Level Design - Mapas e Níveis"</code><br>
+                2. <strong>Descreva o primeiro nível:</strong> início, meio, fim<br>
+                3. <strong>Desenhe um mapa simples</strong> (pode usar desenho do Google Docs)<br>
+                4. <strong>Marque:</strong> ⭐ objetivos, ❌ obstáculos, ➡️ caminhos<br>
+                5. <strong>Planeje progressão:</strong> como os níveis ficam mais difíceis</p>
+                <a href="https://drive.google.com" target="_blank" class="btn-drive">📁 Abrir Google Drive</a>
+                <button class="btn-drive" onclick="mostrarTemplateAula6()">📋 Ver Template Level Design</button>
+            </div>
+            
+            <div class="desafio">
+                <h4>🚀 Desafio Prático da Aula 6</h4>
+                <p>🎯 <strong>Missão:</strong> Desenhe no papel o mapa do seu primeiro nível. Use símbolos simples: ⭐ objetivos, ❌ obstáculos, ➡️ caminhos.</p>
+            </div>
+            
+            <div class="navegacao">
+                <button class="nav-btn" onclick="aulaAnterior()">⬅️ Aula Anterior</button>
+                <div class="progresso">Aula 6 de 8</div>
+                <button class="nav-btn" onclick="proximaAula()">Próxima Aula ➡️</button>
+            </div>
+        </section>
+        
+        <!-- Aula 7: UI/UX em jogos -->
+        <section class="aula" id="aula7">
+            <div class="aula-header">
+                <h2>🖥️ Aula 7: Interface que Seduz (UI/UX)</h2>
+                <button class="btn-estela" onclick="ouvirEstela(7)">
+                    🔊 Ouvir explicação da Estela
+                </button>
+                
+                <div class="audio-controls" id="audio-controls-7">
+                    <h4>🎵 Controles de Áudio da Estela</h4>
+                    <div class="controles-principais">
+                        <button onclick="pausarAudio()">⏸️ Pausar</button>
+                        <button onclick="continuarAudio()">▶️ Continuar</button>
+                        <button onclick="pararAudio()">⏹️ Parar</button>
+                    </div>
+                    <div class="controles-velocidade">
+                        <label>Velocidade:</label>
+                        <button onclick="mudarVelocidade(0.5)">0.5x</button>
+                        <button onclick="mudarVelocidade(1)" class="active">1x</button>
+                        <button onclick="mudarVelocidade(1.5)">1.5x</button>
+                        <button onclick="mudarVelocidade(2)">2x</button>
+                    </div>
+                    <div class="status-audio" id="status-audio-7">
+                        🎤 Preparando explicação da Estela...
+                    </div>
+                </div>
+                
+                <div class="texto-estela" id="texto-estela-7">
+                    <h4>🤖 Estela está explicando:</h4>
+                    <p>Interface e experiência do usuário - a magia invisível! A melhor UI é aquela que você nem percebe que existe, como um garçom perfeito que está sempre lá quando você precisa, mas nunca atrapalha sua experiência.</p>
+                    
+                    <p>A Lei de Fitts nos ensina que botões importantes devem ser grandes e acessíveis. Lembre-se dos princípios: consistência, feedback imediato, hierarquia visual clara, e simplicidade elegante.</p>
+                </div>
+            </div>
+            
+            <div class="secao">
+                <h3>✨ UI/UX = Magia Invisível</h3>
+                <p><strong>A melhor interface é aquela que você nem percebe que existe!</strong> Como um garçom perfeito - está sempre lá quando precisa, mas nunca atrapalha.</p>
+                
+                <div class="exemplo">
+                    <h4>🎯 Os 5 Mandamentos da UI em Jogos:</h4>
+                    <p><strong>👁️ VISIBILIDADE:</strong> Informações importantes são claras</p>
+                    <p><strong>⚡ FEEDBACK:</strong> Toda ação tem resposta imediata</p>
+                    <p><strong>🧭 CONSISTÊNCIA:</strong> Padrões visuais se repetem</p>
+                    <p><strong>📱 ACESSIBILIDADE:</strong> Fácil para todos usarem</p>
+                    <p><strong>🎨 ESTÉTICA:</strong> Bonita e coerente com o jogo</p>
+                </div>
+                
+                <div class="destaque">
+                    💡 <strong>Lei de Fitts:</strong> Botões importantes devem ser GRANDES e ACESSÍVEIS. Vida do jogador? Canto da tela, sempre visível!
+                </div>
+                
+                <div class="exemplo">
+                    <h4>🎪 Exemplos de UI Genial:</h4>
+                    <p><strong>❤️ VIDA:</strong> Corações vermelhos (universal)</p>
+                    <p><strong>⭐ PONTOS:</strong> Números grandes, cores quentes</p>
+                    <p><strong>⏸️ PAUSE:</strong> Sempre no mesmo lugar</p>
+                    <p><strong>🎵 SOM:</strong> Ícone recognível, fácil de alternar</p>
+                </div>
+            </div>
+            
+            <div class="quiz">
+                <h4>📝 Quiz: UI/UX Perfeita</h4>
+                <p>Segundo a Lei de Fitts, onde devem ficar informações vitais?</p>
+                
+                <div class="opcoes">
+                    <div class="opcao" onclick="responder(this, false)">🔄 No centro da tela</div>
+                    <div class="opcao" onclick="responder(this, true)">👁️ Sempre visíveis nas bordas</div>
+                    <div class="opcao" onclick="responder(this, false)">📱 Em menus ocultos</div>
+                    <div class="opcao" onclick="responder(this, false)">⬇️ Na parte inferior</div>
+                </div>
+            </div>
+            
+            <div class="campo-resposta">
+                <h4>✍️ Projetando sua Interface:</h4>
+                <textarea placeholder="Como será a interface do SEU jogo? Onde ficará a vida do jogador? Os pontos? Os botões? Descreva sua UI ideal..."></textarea>
+                <button class="btn-salvar" onclick="salvarResposta(this)">💾 Salvar design UI</button>
+            </div>
+            
+            <div class="drive-instrucao-aula">
+                <h4>📁 TAREFA NO GOOGLE DRIVE - Aula 7</h4>
+                <p><strong>Desenhe a interface do seu jogo!</strong></p>
+                <p>1. <strong>Crie documento</strong> <code>"Interface e UI do Meu Jogo"</code><br>
+                2. <strong>Desenhe a tela principal</strong> (use desenho do Google Docs)<br>
+                3. <strong>Posicione elementos:</strong> vida, pontos, botões, menu<br>
+                4. <strong>Defina cores e estilo</strong> da interface<br>
+                5. <strong>Liste todas as telas:</strong> menu, jogo, pause, game over</p>
+                <a href="https://drive.google.com" target="_blank" class="btn-drive">📁 Abrir Google Drive</a>
+                <button class="btn-drive" onclick="mostrarTemplateAula7()">📋 Ver Template UI/UX</button>
+            </div>
+            
+            <div class="desafio">
+                <h4>🚀 Desafio Prático da Aula 7</h4>
+                <p>🎯 <strong>Missão:</strong> Desenhe a tela principal do seu jogo com TODOS os elementos de UI. Teste: alguém consegue entender tudo sem explicação?</p>
+            </div>
+            
+            <div class="navegacao">
+                <button class="nav-btn" onclick="aulaAnterior()">⬅️ Aula Anterior</button>
+                <div class="progresso">Aula 7 de 8</div>
+                <button class="nav-btn" onclick="proximaAula()">Próxima Aula ➡️</button>
+            </div>
+        </section>
+        
+        <!-- Aula 8: Introdução ao Documento de Design de Jogo (GDD) -->
+        <section class="aula" id="aula8">
+            <div class="aula-header">
+                <h2>📋 Aula 8: Seu Documento de Design (GDD)</h2>
+                <button class="btn-estela" onclick="ouvirEstela(8)">
+                    🔊 Ouvir explicação da Estela
+                </button>
+                
+                <div class="audio-controls" id="audio-controls-8">
+                    <h4>🎵 Controles de Áudio da Estela</h4>
+                    <div class="controles-principais">
+                        <button onclick="pausarAudio()">⏸️ Pausar</button>
+                        <button onclick="continuarAudio()">▶️ Continuar</button>
+                        <button onclick="pararAudio()">⏹️ Parar</button>
+                    </div>
+                    <div class="controles-velocidade">
+                        <label>Velocidade:</label>
+                        <button onclick="mudarVelocidade(0.5)">0.5x</button>
+                        <button onclick="mudarVelocidade(1)" class="active">1x</button>
+                        <button onclick="mudarVelocidade(1.5)">1.5x</button>
+                        <button onclick="mudarVelocidade(2)">2x</button>
+                    </div>
+                    <div class="status-audio" id="status-audio-8">
+                        🎤 Preparando explicação da Estela...
+                    </div>
+                </div>
+                
+                <div class="texto-estela" id="texto-estela-8">
+                    <h4>🤖 Estela está explicando:</h4>
+                    <p>Chegamos à aula final desta primeira etapa! O Game Design Document é seu mapa do tesouro - vai guiar você até seu jogo completo sem se perder pelo caminho!</p>
+                    
+                    <p>Um GDD não precisa ser um documento gigante e intimidador. Comece simples: conceito central, mecânicas principais, estilo visual, e cronograma básico. Uma página bem escrita vale mais que cinquenta páginas confusas!</p>
+                    
+                    <p>Parabéns por chegar até aqui! Você tem agora todas as ferramentas conceituais para criar experiências incríveis. A próxima etapa será a implementação técnica - e eu estarei aqui para te guiar!</p>
+                </div>
+            </div>
+            
+            <div class="secao">
+                <h3>📝 GDD = Mapa do Tesouro</h3>
+                <p><strong>O Game Design Document é o mapa que vai te guiar até o tesouro: seu jogo completo!</strong> Sem ele, você pode se perder no caminho.</p>
+                
+                <div class="exemplo">
+                    <h4>📚 Estrutura do GDD Perfeito:</h4>
+                    <p><strong>🎯 CONCEITO:</strong> Sua ideia central em uma página</p>
+                    <p><strong>🎮 MECÂNICAS:</strong> Como o jogo funciona</p>
+                    <p><strong>🎨 ESTILO VISUAL:</strong> Como o jogo se parece</p>
+                    <p><strong>📅 CRONOGRAMA:</strong> Quando cada parte fica pronta</p>
+                    <p><strong>🎯 OBJETIVOS:</strong> O que o jogador precisa fazer</p>
+                </div>
+                
+                <div class="destaque">
+                    💡 <strong>Sabedoria:</strong> Uma página bem escrita vale mais que cinquenta páginas confusas! Seja claro e objetivo.
+                </div>
+                
+                <div class="exemplo">
+                    <h4>📝 Template Simples para Começar:</h4>
+                    <p><strong>Nome:</strong> Como se chama seu jogo?</p>
+                    <p><strong>Gênero:</strong> Puzzle? Plataforma? Corrida?</p>
+                    <p><strong>Premissa:</strong> Sua frase-resumo</p>
+                    <p><strong>Personagem:</strong> Quem é o protagonista?</p>
+                    <p><strong>Objetivo:</strong> O que o jogador precisa fazer?</p>
+                    <p><strong>Controles:</strong> Como se joga?</p>
+                </div>
+            </div>
+            
+            <div class="quiz">
+                <h4>📝 Quiz Final: GDD Essencial</h4>
+                <p>Qual é a parte mais importante de um GDD inicial?</p>
+                
+                <div class="opcoes">
+                    <div class="opcao" onclick="responder(this, false)">📊 Análise de mercado</div>
+                    <div class="opcao" onclick="responder(this, true)">🎯 Conceito central claro</div>
+                    <div class="opcao" onclick="responder(this, false)">💰 Projeção de vendas</div>
+                    <div class="opcao" onclick="responder(this, false)">👥 Equipe de desenvolvimento</div>
+                </div>
+            </div>
+            
+            <div class="campo-resposta">
+                <h4>✍️ Criando seu GDD Inicial:</h4>
+                <textarea placeholder="Agora é SUA vez! Escreva seu GDD inicial usando o template: Nome, Gênero, Premissa, Personagem, Objetivo e Controles básicos."></textarea>
+                <button class="btn-salvar" onclick="salvarResposta(this)">💾 Salvar meu GDD</button>
+            </div>
+            
+            <div class="drive-instrucao-aula">
+                <h4>📁 TAREFA FINAL NO GOOGLE DRIVE - Aula 8</h4>
+                <p><strong>🎉 Hora de criar seu Game Design Document completo!</strong></p>
+                <p>1. <strong>Crie documento</strong> <code>"MEU JOGO - Game Design Document Completo"</code><br>
+                2. <strong>Compile TUDO:</strong> junte informações de todas as aulas anteriores<br>
+                3. <strong>Use o template GDD</strong> que aparecerá abaixo<br>
+                4. <strong>Organize em seções:</strong> Conceito, Mecânicas, Personagens, Níveis, UI<br>
+                5. <strong>Adicione cronograma:</strong> quando cada parte ficará pronta</p>
+                <a href="https://drive.google.com" target="_blank" class="btn-drive">📁 Abrir Google Drive</a>
+                <button class="btn-drive" onclick="mostrarTemplateAula8()">📋 Ver Template GDD Completo</button>
+                <button class="btn-drive" onclick="mostrarExemploGDD()">🎮 Ver Exemplo de GDD</button>
+            </div>
+            
+            <div class="desafio">
+                <h4>🚀 Desafio Final da Semana</h4>
+                <p>🎯 <strong>Missão Épica:</strong> Complete seu GDD de uma página e compartilhe com um amigo. Peça feedback: ele entendeu sua visão?</p>
+            </div>
+            
+            <div class="parabens">
+                <h3>🎉 PARABÉNS!</h3>
+                <p><strong>Você concluiu a primeira etapa do curso!</strong></p>
+                <p>Agora você tem todas as ferramentas conceituais para criar experiências incríveis.</p>
+                <p>🚀 <strong>Próxima fase:</strong> Vamos partir para a implementação técnica!</p>
+            </div>
+            
+            <div class="navegacao">
+                <button class="nav-btn" onclick="aulaAnterior()">⬅️ Aula Anterior</button>
+                <div class="progresso">Aula 8 de 8 ✅</div>
+                <button class="nav-btn" onclick="reiniciarCurso()">🔄 Reiniciar Curso</button>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Modal para Templates -->
+    <div id="templateModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <div class="modal-header">
+                <h3 id="modalTitle">Template</h3>
+                <p id="modalSubtitle">Copie este template para seu Google Drive</p>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Conteúdo será inserido via JavaScript -->
+            </div>
+        </div>
     </div>
 
     <script>
+        // ===== VARIÁVEIS GLOBAIS =====
         let aulaAtual = 1;
         let audioAtual = null;
         let velocidadeAtual = 1;
+        let estaSynthesis = null;
         
+        // ===== CONFIGURAÇÃO DE ÁUDIOS =====
         const audiosEstela = {
             1: './aula1.mp3',
             2: './aula2.mp3',
@@ -453,27 +1672,152 @@
             8: './aula8.mp3'
         };
         
+        // ===== TEXTOS PARA SÍNTESE DE VOZ =====
+        const textosEstela = {
+            1: "Olá! Eu sou a Estela, sua assistente virtual especializada em desenvolvimento de jogos! Seja muito bem-vindo ao nosso curso de Desenvolvimento de Jogos 2D! Nesta primeira aula, vamos mergulhar nos fundamentos do design de jogos. Design de jogos é muito mais do que apenas criar algo divertido - é uma arte que combina psicologia, tecnologia e criatividade para criar experiências memoráveis. Vamos começar entendendo os 4 pilares fundamentais: Mecânica, que são as regras do seu jogo; Estética, como seu jogo se apresenta visualmente e sonoramente; Tecnologia, as ferramentas que você vai usar; e História, que dá significado às ações do jogador. O conceito mais importante que quero que você entenda hoje é o fluxo - aquele estado onde o jogador fica completamente imerso no jogo, perdendo a noção do tempo. Isso acontece quando há um equilíbrio perfeito entre desafio e habilidade.",
+            
+            2: "Oba! Chegamos à aula dos gêneros de jogos! Esta é uma das minhas partes favoritas porque vamos explorar um universo de possibilidades criativas. Cada gênero é como um sabor diferente de sorvete - alguns são clássicos que nunca saem de moda, outros são inovações que criam tendências! Jogos de plataforma focam em movimentação precisa, puzzles estimulam sua mente, RPGs permitem evoluir e crescer, e shoot'em ups testam seus reflexos. A dica de ouro é escolher um gênero que você realmente ama jogar, porque essa paixão vai te motivar durante todo o desenvolvimento. Lembre-se: você pode misturar gêneros para criar algo único!",
+            
+            3: "Agora vamos mergulhar no framework MDA - Mecânica, Dinâmica e Estética! Imagine que você está construindo uma máquina de diversão incrível. As engrenagens são suas mecânicas - as regras que você cria. O movimento da máquina é a dinâmica - como os jogadores se comportam com suas regras. E a alegria que a máquina causa é a estética - as emoções que despertamos! É um processo fascinante: você cria mecânicas simples, mas quando os jogadores interagem com elas, surgem comportamentos complexos e inesperados que geram emoções poderosas!",
+            
+            4: "Chegou a hora de falarmos sobre narrativa! A narrativa é o tempero secreto que transforma mecânicas em experiências emocionais profundas. Não precisa ser uma história complexa - precisa ser envolvente! O segredo é que uma premissa simples bem executada sempre vence uma trama complexa mal contada. Pense no Pac-Man - a história é basicamente fantasmas perseguem círculo amarelo que come pontos, mas que experiência épica isso se tornou! A clareza e simplicidade são suas melhores amigas na criação de narrativas para jogos.",
+            
+            5: "Vamos falar sobre personagens! Esta é uma das partes mais divertidas do desenvolvimento de jogos, porque é onde damos vida às nossas criações! Um personagem memorável combina três elementos: visual marcante, personalidade única e funcionalidade perfeita no jogo. A silhueta é super importante - Mario é reconhecível mesmo como uma sombra por causa do chapéu e bigode! O teste da silhueta nunca falha: se seu personagem for reconhecível apenas pelo contorno, você acertou em cheio!",
+            
+            6: "Level design é onde a mágica realmente acontece! É aqui que todas as suas mecânicas e ideias se encontram em um espaço concreto onde o jogador vai jogar. Um bom level design é como uma sinfonia - tem ritmo, com momentos de tensão e relaxamento. Tem progressão, onde o jogador vai gradualmente enfrentando desafios maiores. E tem orientação, guiando o jogador sem ser óbvio demais. Lembre-se: o jogador deve sempre saber para onde ir, mesmo que não saiba como chegar lá!",
+            
+            7: "Interface e experiência do usuário - a magia invisível! A melhor UI é aquela que você nem percebe que existe, como um garçom perfeito que está sempre lá quando você precisa, mas nunca atrapalha sua experiência. A Lei de Fitts nos ensina que botões importantes devem ser grandes e acessíveis. Lembre-se dos princípios: consistência, feedback imediato, hierarquia visual clara, e simplicidade elegante. Uma interface bem feita é a diferença entre um jogo frustrante e um jogo viciante!",
+            
+            8: "Chegamos à aula final desta primeira etapa! O Game Design Document é seu mapa do tesouro - vai guiar você até seu jogo completo sem se perder pelo caminho! Um GDD não precisa ser um documento gigante e intimidador. Comece simples: conceito central, mecânicas principais, estilo visual, e cronograma básico. Uma página bem escrita vale mais que cinquenta páginas confusas! Parabéns por chegar até aqui! Você tem agora todas as ferramentas conceituais para criar experiências incríveis. A próxima etapa será a implementação técnica - e eu estarei aqui para te guiar!"
+        };
+        
+        // ===== FUNÇÃO PRINCIPAL - OUVIR ESTELA =====
         function ouvirEstela(numeroAula) {
-            const textoDiv = document.getElementById('texto-estela-' + numeroAula);
-            if (textoDiv) {
-                textoDiv.classList.add('ativo');
-            }
+            console.log('🎵 Iniciando explicação da aula:', numeroAula);
             
+            const btnEstela = document.querySelector(`#aula${numeroAula} .btn-estela`);
+            
+            // Parar áudio/síntese anterior
+            pararTodosAudios();
+            
+            // Tentar primeiro os arquivos MP3
             const audioUrl = audiosEstela[numeroAula];
-            if (!audioUrl) return;
+            if (audioUrl) {
+                tentarAudioArquivo(audioUrl, btnEstela, numeroAula);
+            } else {
+                // Fallback para síntese de voz
+                iniciarSinteseVoz(numeroAula, btnEstela);
+            }
+        }
+        
+        function tentarAudioArquivo(url, btnEstela, numeroAula) {
+            const audio = new Audio(url);
             
-            if (audioAtual) {
-                audioAtual.pause();
-                audioAtual = null;
+            audio.addEventListener('loadstart', function() {
+                console.log('📁 Carregando áudio da aula', numeroAula);
+                btnEstela.textContent = '🔄 Carregando...';
+            });
+            
+            audio.addEventListener('canplay', function() {
+                console.log('✅ Áudio pronto para aula', numeroAula);
+                btnEstela.textContent = '🔊 Reproduzindo...';
+                btnEstela.classList.add('playing');
+            });
+            
+            audio.addEventListener('ended', function() {
+                console.log('⏹️ Áudio finalizado');
+                btnEstela.textContent = '🔊 Ouvir explicação da Estela';
+                btnEstela.classList.remove('playing');
+            });
+            
+            audio.addEventListener('error', function(e) {
+                console.log('❌ Erro no áudio, tentando síntese de voz:', e);
+                iniciarSinteseVoz(numeroAula, btnEstela);
+            });
+            
+            audio.play().then(() => {
+                console.log('▶️ Reproduzindo áudio da aula', numeroAula);
+            }).catch(error => {
+                console.log('❌ Erro ao reproduzir, usando síntese:', error);
+                iniciarSinteseVoz(numeroAula, btnEstela);
+            });
+        }
+        
+        function iniciarSinteseVoz(numeroAula, btnEstela) {
+            if (!('speechSynthesis' in window)) {
+                alert('🔊 Seu navegador não suporta síntese de voz. Atualize para uma versão mais recente!');
+                return;
             }
             
-            audioAtual = new Audio(audioUrl);
-            audioAtual.playbackRate = velocidadeAtual;
+            // Parar síntese anterior
+            window.speechSynthesis.cancel();
             
-            audioAtual.play().catch(function(error) {
-                console.log('Erro no áudio:', error);
-                alert('Texto disponível para leitura! Para ouvir o áudio, permita reprodução automática no navegador.');
-            });
+            const texto = textosEstela[numeroAula];
+            if (!texto) {
+                alert('❌ Texto não encontrado para esta aula.');
+                return;
+            }
+            
+            estaSynthesis = new SpeechSynthesisUtterance(texto);
+            estaSynthesis.lang = 'pt-BR';
+            estaSynthesis.rate = 0.9;
+            estaSynthesis.pitch = 1.1;
+            estaSynthesis.volume = 1;
+            
+            // Tentar usar voz feminina
+            const vozes = window.speechSynthesis.getVoices();
+            const vozFeminina = vozes.find(voz => 
+                voz.lang.includes('pt') && 
+                (voz.name.includes('female') || voz.name.includes('Feminina') || voz.name.includes('Luciana'))
+            );
+            
+            if (vozFeminina) {
+                estaSynthesis.voice = vozFeminina;
+            }
+            
+            estaSynthesis.onstart = function() {
+                console.log('🎤 Iniciando síntese de voz');
+                btnEstela.textContent = '🎤 Estela falando...';
+                btnEstela.classList.add('playing');
+            };
+            
+            estaSynthesis.onend = function() {
+                console.log('✅ Síntese finalizada');
+                btnEstela.textContent = '🔊 Ouvir explicação da Estela';
+                btnEstela.classList.remove('playing');
+            };
+            
+            estaSynthesis.onerror = function(e) {
+                console.log('❌ Erro na síntese:', e);
+                btnEstela.textContent = '❌ Erro no áudio';
+                btnEstela.classList.remove('playing');
+            };
+            
+            window.speechSynthesis.speak(estaSynthesis);
+        }
+        
+        // ===== CONTROLES DE ÁUDIO =====
+        function pausarAudio() {
+            if (audioAtual && !audioAtual.paused) {
+                audioAtual.pause();
+                console.log('⏸️ Áudio pausado');
+            } else if (estaSynthesis && window.speechSynthesis.speaking) {
+                window.speechSynthesis.pause();
+                console.log('⏸️ Síntese pausada');
+            }
+        }
+        
+        function continuarAudio() {
+            if (audioAtual && audioAtual.paused) {
+                audioAtual.play().then(() => {
+                    console.log('▶️ Áudio retomado');
+                }).catch(error => {
+                    console.log('❌ Erro ao retomar áudio:', error);
+                });
+            } else if (estaSynthesis && window.speechSynthesis.paused) {
+                window.speechSynthesis.resume();
+                console.log('▶️ Síntese retomada');
+            }
         }
         
         function pararAudio() {
@@ -481,55 +1825,129 @@
                 audioAtual.pause();
                 audioAtual.currentTime = 0;
                 audioAtual = null;
+                console.log('⏹️ Áudio parado');
             }
-        }
-        
-        function pausarAudio() {
-            if (audioAtual) {
-                audioAtual.pause();
+            
+            if (window.speechSynthesis) {
+                window.speechSynthesis.cancel();
+                estaSynthesis = null;
+                console.log('⏹️ Síntese parada');
             }
-        }
-        
-        function continuarAudio() {
-            if (audioAtual && audioAtual.paused) {
-                audioAtual.play();
-            }
+            
+            // Resetar botões e controles
+            document.querySelectorAll('.btn-estela').forEach(btn => {
+                btn.textContent = '🔊 Ouvir explicação da Estela';
+                btn.classList.remove('playing');
+            });
+            
+            document.querySelectorAll('.audio-controls').forEach(control => {
+                control.classList.remove('ativo');
+            });
+            
+            document.querySelectorAll('.status-audio').forEach(status => {
+                status.textContent = '⏹️ Áudio parado';
+            });
         }
         
         function mudarVelocidade(velocidade) {
             velocidadeAtual = velocidade;
+            
+            // Atualizar áudio atual
             if (audioAtual) {
                 audioAtual.playbackRate = velocidade;
+                console.log('🎵 Velocidade do áudio alterada para:', velocidade + 'x');
             }
             
-            document.querySelectorAll('.audio-controls button').forEach(btn => {
-                btn.style.backgroundColor = '';
+            // Atualizar síntese atual (só funciona ao reiniciar)
+            if (estaSynthesis && window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+                estaSynthesis.rate = velocidade * 0.9; // Ajuste para síntese
+                window.speechSynthesis.speak(estaSynthesis);
+                console.log('🎤 Velocidade da síntese alterada para:', velocidade + 'x');
+            }
+            
+            // Atualizar visual dos botões de velocidade
+            document.querySelectorAll('.controles-velocidade button').forEach(btn => {
+                btn.classList.remove('active');
             });
-            event.target.style.backgroundColor = 'var(--ciano)';
+            
+            // Marcar botão ativo em todos os controles
+            document.querySelectorAll('.controles-velocidade button').forEach(btn => {
+                if (btn.textContent === velocidade + 'x') {
+                    btn.classList.add('active');
+                }
+            });
+            
+            console.log('🎵 Velocidade global alterada para:', velocidade + 'x');
         }
         
-        function irParaAula(numero) {
-            pararAudio();
+        function pararTodosAudios() {
+            // Parar áudio atual
+            if (audioAtual) {
+                audioAtual.pause();
+                audioAtual.currentTime = 0;
+                audioAtual = null;
+            }
             
+            // Parar síntese de voz
+            if (window.speechSynthesis) {
+                window.speechSynthesis.cancel();
+                estaSynthesis = null;
+            }
+            
+            // Parar todos os áudios da página
+            document.querySelectorAll('audio').forEach(audio => {
+                audio.pause();
+                audio.currentTime = 0;
+            });
+            
+            // Resetar todos os botões
+            document.querySelectorAll('.btn-estela').forEach(btn => {
+                btn.textContent = '🔊 Ouvir explicação da Estela';
+                btn.classList.remove('playing');
+            });
+            
+            // Esconder todos os controles
+            document.querySelectorAll('.audio-controls').forEach(control => {
+                control.classList.remove('ativo');
+            });
+            
+            console.log('🔇 Todos os áudios parados');
+        }
+        
+        // ===== NAVEGAÇÃO ENTRE AULAS =====
+        function irParaAula(numero) {
+            console.log('📚 Navegando para aula:', numero);
+            
+            // Parar todos os áudios e esconder controles
+            pararTodosAudios();
+            
+            // Esconder todas as aulas
             document.querySelectorAll('.aula').forEach(aula => {
                 aula.classList.remove('active');
             });
             
+            // Esconder todos os textos da Estela
             document.querySelectorAll('.texto-estela').forEach(texto => {
                 texto.classList.remove('ativo');
             });
             
+            // Mostrar aula selecionada
             const aulaElement = document.getElementById('aula' + numero);
             if (aulaElement) {
                 aulaElement.classList.add('active');
                 aulaAtual = numero;
                 
+                // Atualizar botões do menu
                 document.querySelectorAll('.menu-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
                 document.querySelectorAll('.menu-btn')[numero - 1].classList.add('active');
+                
+                console.log('✅ Aula', numero, 'ativada');
             }
             
+            // Rolar para o topo
             window.scrollTo(0, 0);
         }
         
@@ -545,6 +1963,13 @@
             }
         }
         
+        function reiniciarCurso() {
+            if (confirm('🔄 Tem certeza que deseja reiniciar o curso?')) {
+                irParaAula(1);
+            }
+        }
+        
+        // ===== SISTEMA DE QUIZ =====
         function responder(elemento, correto) {
             const opcoes = elemento.parentNode.querySelectorAll('.opcao');
             opcoes.forEach(opcao => {
@@ -554,17 +1979,632 @@
             
             if (correto) {
                 elemento.classList.add('correta');
+                setTimeout(() => {
+                    alert('🎉 Correto! Você está dominando o conceito!');
+                }, 500);
             } else {
                 elemento.classList.add('incorreta');
+                // Marcar a resposta correta
                 opcoes.forEach(opcao => {
                     if (opcao.onclick && opcao.onclick.toString().includes('true')) {
                         opcao.classList.add('correta');
                     }
                 });
+                setTimeout(() => {
+                    alert('💡 Não foi dessa vez, mas agora você sabe a resposta certa!');
+                }, 500);
             }
         }
         
-        console.log('🎮 Curso carregado!');
+        // ===== SISTEMA DE RESPOSTAS =====
+        function salvarResposta(button) {
+            const textarea = button.previousElementSibling;
+            const resposta = textarea.value.trim();
+            
+            if (resposta.length < 10) {
+                alert('💬 Escreva um pouco mais! Sua reflexão é importante para o aprendizado.');
+                return;
+            }
+            
+            // Simular salvamento
+            button.textContent = '✅ Salvo!';
+            button.style.background = '#27ae60';
+            
+            console.log('💾 Resposta salva:', resposta);
+            
+            setTimeout(() => {
+                button.textContent = '💾 Salvar minha resposta';
+                button.style.background = '';
+                alert('✅ Resposta salva com sucesso! Continue assim!');
+            }, 2000);
+        }
+        
+        // ===== SISTEMA DE TEMPLATES DO GOOGLE DRIVE =====
+        function mostrarTemplate(titulo, subtitulo, conteudo) {
+            document.getElementById('modalTitle').textContent = titulo;
+            document.getElementById('modalSubtitle').textContent = subtitulo;
+            document.getElementById('modalBody').innerHTML = conteudo;
+            document.getElementById('templateModal').style.display = 'block';
+        }
+        
+        function fecharModal() {
+            document.getElementById('templateModal').style.display = 'none';
+        }
+        
+        function copiarTexto(elementId) {
+            const elemento = document.getElementById(elementId);
+            const texto = elemento.textContent;
+            
+            navigator.clipboard.writeText(texto).then(() => {
+                alert('✅ Template copiado! Cole no seu Google Drive.');
+            }).catch(() => {
+                alert('❌ Erro ao copiar. Selecione o texto manualmente e copie (Ctrl+C).');
+            });
+        }
+        
+        // Templates específicos para cada aula
+        function mostrarTemplateAula1() {
+            const conteudo = `
+                <div class="template-section">
+                    <h4>📋 Template: Aula 1 - Princípios de Design</h4>
+                    <p><strong>Nome do documento:</strong> "Aula 1 - Princípios de Design"</p>
+                    
+                    <div id="template1" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 10px 0; font-family: monospace;">
+=== AULA 1 - PRINCÍPIOS DE DESIGN DE JOGOS ===
+
+📅 Data: [inserir data de hoje]
+
+🎯 CONCEITOS APRENDIDOS:
+• Design de jogos = psicologia + tecnologia + criatividade
+• 4 pilares: Mecânica, Estética, Tecnologia, História
+• Estado de FLUXO = equilíbrio entre desafio e habilidade
+
+✍️ MINHA REFLEXÃO:
+Jogo que eu amo: [nome do jogo]
+Por que volto sempre: [sua resposta]
+O que cria o "fluxo" neste jogo: [sua análise]
+
+🎮 DESAFIO PRÁTICO:
+Jogo analisado: [nome]
+3 elementos que criam fluxo:
+1. [elemento 1]
+2. [elemento 2] 
+3. [elemento 3]
+
+📝 NOTAS EXTRAS:
+[suas anotações pessoais]
+                    </div>
+                    
+                    <button class="btn-copiar" onclick="copiarTexto('template1')">📋 Copiar Template</button>
+                </div>
+            `;
+            
+            mostrarTemplate('Template Aula 1', 'Copie e cole no Google Drive', conteudo);
+        }
+        
+        function mostrarTemplateAula2() {
+            const conteudo = `
+                <div class="template-section">
+                    <h4>📋 Template: Meu Jogo - Definições Básicas</h4>
+                    <p><strong>Nome do documento:</strong> "Meu Jogo - Definições Básicas"</p>
+                    
+                    <div id="template2" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 10px 0; font-family: monospace;">
+=== MEU JOGO - DEFINIÇÕES BÁSICAS ===
+
+📅 Criado em: [data de hoje]
+
+🎲 GÊNERO ESCOLHIDO:
+Gênero principal: [Plataforma/Puzzle/RPG/Shooter/Corrida/etc]
+Por que escolhi: [sua justificativa]
+
+🎮 JOGOS DE REFERÊNCIA:
+1. [jogo que inspira] - porque: [motivo]
+2. [jogo que inspira] - porque: [motivo]
+3. [jogo que inspira] - porque: [motivo]
+
+🎯 EXPERIÊNCIA QUE QUERO CRIAR:
+[descreva que tipo de experiência/emoção quer despertar no jogador]
+
+💡 PRIMEIRAS IDEIAS:
+[anote suas primeiras ideias sobre como será seu jogo]
+
+📝 PRÓXIMOS PASSOS:
+- Definir mecânicas básicas (Aula 3)
+- Criar narrativa (Aula 4)
+- Desenhar personagem (Aula 5)
+                    </div>
+                    
+                    <button class="btn-copiar" onclick="copiarTexto('template2')">📋 Copiar Template</button>
+                </div>
+            `;
+            
+            mostrarTemplate('Template Aula 2', 'Documento principal do seu projeto', conteudo);
+        }
+        
+        function mostrarTemplateAula3() {
+            const conteudo = `
+                <div class="template-section">
+                    <h4>📋 Template: Framework MDA do Meu Jogo</h4>
+                    <p><strong>Adicione esta seção ao documento:</strong> "Meu Jogo - Definições Básicas"</p>
+                    
+                    <div id="template3" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 10px 0; font-family: monospace;">
+
+=== FRAMEWORK MDA DO MEU JOGO ===
+
+🔧 MECÂNICAS (as regras do jogo):
+1. [mecânica básica 1] - exemplo: "jogador move personagem"
+2. [mecânica básica 2] - exemplo: "coleta itens"
+3. [mecânica básica 3] - exemplo: "evita obstáculos"
+4. [mecânica básica 4] - exemplo: "ganha pontos"
+5. [mecânica básica 5] - exemplo: "perde vida ao errar"
+
+⚡ DINÂMICA (como jogadores se comportam):
+• O que espero que o jogador faça: [comportamento esperado]
+• Como será a tomada de decisões: [tipo de decisões]
+• Ritmo do jogo: [rápido/lento/variável]
+• Padrões de comportamento: [como jogador vai agir]
+
+🎨 ESTÉTICA (emoções que quero despertar):
+• Emoção principal: [tensão/diversão/relaxamento/competição]
+• Sentimentos secundários: [curiosidade/conquista/socialização]
+• Tom geral: [sério/divertido/épico/casual]
+
+🔄 COMO MDA SE CONECTA:
+[explique como suas mecânicas levam às dinâmicas, que geram as emoções desejadas]
+                    </div>
+                    
+                    <button class="btn-copiar" onclick="copiarTexto('template3')">📋 Copiar Template MDA</button>
+                </div>
+            `;
+            
+            mostrarTemplate('Template Aula 3', 'Framework MDA para seu jogo', conteudo);
+        }
+        
+        function mostrarTemplateAula4() {
+            const conteudo = `
+                <div class="template-section">
+                    <h4>📋 Template: Narrativa e História</h4>
+                    <p><strong>Adicione esta seção ao documento:</strong> "Meu Jogo - Definições Básicas"</p>
+                    
+                    <div id="template4" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 10px 0; font-family: monospace;">
+
+=== NARRATIVA E HISTÓRIA ===
+
+🎯 PREMISSA (em uma frase):
+"[Descreva seu jogo em UMA frase clara e envolvente]"
+
+Exemplos:
+• "Robô perdido busca casa em mundo pós-apocalíptico"
+• "Gato ninja salva peixes de piratas espaciais"
+• "Estudante resolve mistérios numa escola assombrada"
+
+🌍 CONTEXTO (mundo do jogo):
+• Onde acontece: [local/mundo/cenário]
+• Quando acontece: [época/tempo]
+• Como é este mundo: [características únicas]
+• Tom/atmosfera: [sombrio/alegre/misterioso/futurista]
+
+⚔️ CONFLITO PRINCIPAL:
+• Problema central: [qual o grande problema a resolver]
+• Antagonista: [quem/o que se opõe ao protagonista]
+• Stakes: [o que acontece se o jogador falhar]
+• Motivação: [por que o protagonista deve agir]
+
+📖 ESTRUTURA NARRATIVA:
+• Início: [como a história começa]
+• Desenvolvimento: [como evolui]
+• Clímax: [momento de maior tensão]
+• Resolução: [como termina]
+
+💭 COMO A NARRATIVA APARECE NO JOGO:
+[Visual? Textos? Ações? Como o jogador entende a história?]
+                    </div>
+                    
+                    <button class="btn-copiar" onclick="copiarTexto('template4')">📋 Copiar Template Narrativa</button>
+                </div>
+            `;
+            
+            mostrarTemplate('Template Aula 4', 'Criando a narrativa do seu jogo', conteudo);
+        }
+        
+        function mostrarTemplateAula5() {
+            const conteudo = `
+                <div class="template-section">
+                    <h4>📋 Template: Personagens do Meu Jogo</h4>
+                    <p><strong>Nome do documento:</strong> "Personagens do Meu Jogo"</p>
+                    
+                    <div id="template5" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 10px 0; font-family: monospace;">
+=== PERSONAGENS DO MEU JOGO ===
+
+👤 PROTAGONISTA PRINCIPAL:
+
+🎨 APARÊNCIA FÍSICA:
+• Forma básica: [humano/animal/robô/fantasia]
+• Tamanho: [pequeno/médio/grande]
+• Cor predominante: [cor principal]
+• Características únicas: [o que o torna especial visualmente]
+• Roupas/acessórios: [que elementos usa]
+
+🎭 PERSONALIDADE:
+• Traço principal: [corajoso/curioso/teimoso/esperto]
+• Como se comporta: [suas reações típicas]
+• Motivação: [o que o move]
+• Medos/fraquezas: [do que tem medo]
+• Qualidades: [seus pontos fortes]
+
+⚡ HABILIDADES NO JOGO:
+• Movimento básico: [como se move]
+• Habilidade especial 1: [poder único]
+• Habilidade especial 2: [outro poder]
+• Limitações: [o que não consegue fazer]
+
+👥 OUTROS PERSONAGENS:
+
+🦹 ANTAGONISTA/INIMIGOS:
+• Nome/tipo: [quem se opõe ao protagonista]
+• Aparência: [como são visualmente]
+• Comportamento: [como agem no jogo]
+
+🤝 ALIADOS/NPCs:
+• [se houver personagens que ajudam]
+
+🧪 TESTE DA SILHUETA:
+"Meu personagem seria reconhecível apenas pelo contorno porque..."
+[descreva os elementos únicos da silhueta]
+
+🎨 REFERÊNCIAS VISUAIS:
+[cole aqui links ou descrições de imagens que inspiram seu personagem]
+                    </div>
+                    
+                    <button class="btn-copiar" onclick="copiarTexto('template5')">📋 Copiar Template Personagem</button>
+                </div>
+            `;
+            
+            mostrarTemplate('Template Aula 5', 'Criando personagens memoráveis', conteudo);
+        }
+        
+        function mostrarTemplateAula6() {
+            const conteudo = `
+                <div class="template-section">
+                    <h4>📋 Template: Level Design - Mapas e Níveis</h4>
+                    <p><strong>Nome do documento:</strong> "Level Design - Mapas e Níveis"</p>
+                    
+                    <div id="template6" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 10px 0; font-family: monospace;">
+=== LEVEL DESIGN - MAPAS E NÍVEIS ===
+
+🏗️ NÍVEL 1 (TUTORIAL/INTRODUÇÃO):
+
+📍 OBJETIVO DO NÍVEL:
+• O que o jogador deve fazer: [objetivo principal]
+• Como o jogador saberá o que fazer: [orientação]
+• Recompensa: [o que ganha ao completar]
+
+🎢 ESTRUTURA (RITMO):
+• INTRODUÇÃO: [como começa - sem pressão]
+  - Ensina mecânica: [qual mechânica introduz]
+  - Tempo para aprender: [deixa o jogador experimentar]
+
+• DESENVOLVIMENTO: [como evolui]
+  - Adiciona complexidade: [como fica mais difícil]
+  - Obstáculos: [que desafios apresenta]
+
+• CLÍMAX: [momento de maior desafio]
+  - Teste principal: [maior desafio do nível]
+
+• CONCLUSÃO: [como termina]
+  - Resolução: [como o jogador se sente]
+  - Transição: [como conecta ao próximo nível]
+
+🗺️ MAPA DO NÍVEL:
+[Use o desenho do Google Docs ou descreva]
+
+Legenda:
+⭐ = Objetivos principais
+❌ = Obstáculos/inimigos  
+➡️ = Caminhos/direção
+🏁 = Saída/chegada
+💎 = Itens coletáveis
+🔄 = Pontos de respawn
+
+DESCRIÇÃO DO MAPA:
+[descreva o layout: linear, aberto, labirinto, etc]
+
+🧭 ORIENTAÇÃO DO JOGADOR:
+• Como mostrar onde ir: [luz/cor/setas/design]
+• Como evitar confusão: [clareza visual]
+• Pontos de referência: [marcos visuais]
+
+📈 PROGRESSÃO DOS NÍVEIS:
+• Nível 1: [dificuldade/foco]
+• Nível 2: [como evolui]
+• Nível 3: [próxima evolução]
+• Padrão geral: [como a dificuldade cresce]
+
+💡 ELEMENTOS ESPECIAIS:
+• Mecânica única deste nível: [se houver]
+• Easter eggs: [segredos escondidos]
+• Caminhos alternativos: [rotas opcionais]
+                    </div>
+                    
+                    <button class="btn-copiar" onclick="copiarTexto('template6')">📋 Copiar Template Level Design</button>
+                </div>
+            `;
+            
+            mostrarTemplate('Template Aula 6', 'Projetando níveis épicos', conteudo);
+        }
+        
+        function mostrarTemplateAula7() {
+            const conteudo = `
+                <div class="template-section">
+                    <h4>📋 Template: Interface e UI do Meu Jogo</h4>
+                    <p><strong>Nome do documento:</strong> "Interface e UI do Meu Jogo"</p>
+                    
+                    <div id="template7" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 10px 0; font-family: monospace;">
+=== INTERFACE E UI DO MEU JOGO ===
+
+🖥️ TELA PRINCIPAL DE JOGO:
+
+📍 ELEMENTOS ESSENCIAIS E POSIÇÕES:
+• Vida do jogador: [posição] - [como mostrar: corações/barra/números]
+• Pontuação: [posição] - [estilo visual]
+• Tempo (se houver): [posição] - [formato]
+• Inventário/itens: [posição] - [como organizar]
+• Minimap (se houver): [posição] - [estilo]
+
+🎨 ESTILO VISUAL DA INTERFACE:
+• Paleta de cores: [cores principais da UI]
+• Fonte/tipografia: [estilo do texto]
+• Estilo geral: [moderno/retrô/fantasia/minimalista]
+• Transparência: [opaca/semi-transparente]
+• Bordas: [redondas/quadradas/orgânicas]
+
+📱 TODAS AS TELAS DO JOGO:
+
+🏠 MENU PRINCIPAL:
+• Botões: [Jogar, Configurações, Créditos, Sair]
+• Layout: [vertical/horizontal/circular]
+• Fundo: [imagem/cor/animação]
+
+⏸️ TELA DE PAUSE:
+• Botões: [Continuar, Reiniciar, Menu, Configurações]
+• Como acessar: [tecla/botão]
+• Estilo: [overlay/tela completa]
+
+💀 GAME OVER:
+• Informações: [pontuação final, recorde, tempo]
+• Botões: [Tentar novamente, Menu principal]
+• Feedback: [encorajador/neutro]
+
+⚙️ CONFIGURAÇÕES:
+• Som: [volume/mute]
+• Controles: [personalizável/fixo]
+• Gráficos: [se houver opções]
+
+🏆 TELA DE VITÓRIA:
+• Celebração: [animação/som/texto]
+• Estatísticas: [tempo, pontos, extras]
+• Próximos passos: [próximo nível/menu]
+
+🎮 CONTROLES E FEEDBACK:
+• Botões respondem: [mudança visual ao clicar]
+• Hover effects: [o que acontece ao passar mouse]
+• Transições: [suaves/rápidas/com animação]
+• Sons da UI: [cliques/confirmações]
+
+♿ ACESSIBILIDADE:
+• Botões grandes: [fáceis de clicar]
+• Alto contraste: [cores visíveis]
+• Textos legíveis: [tamanho adequado]
+• Atalhos de teclado: [se houver]
+
+📐 DESENHO DA INTERFACE:
+[Use o desenho do Google Docs para criar mockup da tela principal]
+
+💭 NOTAS DE DESIGN:
+• Por que escolhi essas posições: [justificativa]
+• Inspirações: [outros jogos que me inspiraram]
+• Testes necessários: [o que preciso validar]
+                    </div>
+                    
+                    <button class="btn-copiar" onclick="copiarTexto('template7')">📋 Copiar Template UI/UX</button>
+                </div>
+            `;
+            
+            mostrarTemplate('Template Aula 7', 'Interface que seduz', conteudo);
+        }
+        
+        function mostrarTemplateAula8() {
+            const conteudo = `
+                <div class="template-section">
+                    <h4>📋 Template: GDD Completo</h4>
+                    <p><strong>Nome do documento:</strong> "MEU JOGO - Game Design Document Completo"</p>
+                    
+                    <div id="template8" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 10px 0; font-family: monospace;">
+=== MEU JOGO - GAME DESIGN DOCUMENT COMPLETO ===
+
+📅 Criado em: [data]
+👤 Criador: [seu nome]
+🎯 Versão: 1.0
+
+🎮 INFORMAÇÕES BÁSICAS:
+• Nome do jogo: [título definitivo]
+• Gênero: [principal + subgêneros]
+• Plataforma: [PC/Mobile/Web/Console]
+• Público-alvo: [idade e perfil]
+• Tempo estimado de jogo: [horas/minutos por sessão]
+
+📖 CONCEITO CENTRAL:
+• Premissa (1 frase): [sua frase-resumo]
+• Elevator Pitch: [descreva em 30 segundos]
+• O que torna único: [diferencial do seu jogo]
+
+⚡ MECÂNICAS E GAMEPLAY:
+[Copie da Aula 3 - Framework MDA]
+
+📚 NARRATIVA:
+[Copie da Aula 4 - Narrativa]
+
+👤 PERSONAGENS:
+[Copie da Aula 5 - Personagens]
+
+🏗️ LEVEL DESIGN:
+[Copie da Aula 6 - Level Design]
+
+🖥️ INTERFACE (UI/UX):
+[Copie da Aula 7 - Interface]
+
+🎨 ESTILO VISUAL GERAL:
+• Arte: [pixel art/vetorial/3D/hand-drawn]
+• Paleta de cores: [cores principais]
+• Mood/atmosfera: [alegre/sombrio/épico]
+• Referências: [jogos/filmes/arte que inspiram]
+
+🎵 ÁUDIO:
+• Estilo musical: [eletrônico/orquestral/chiptune]
+• Efeitos sonoros: [realista/cartoon/retro]
+• Voz: [narração/personagens/texto apenas]
+
+🔧 ASPECTOS TÉCNICOS:
+• Engine/ferramenta: [Unity/Construct/Scratch/GameMaker]
+• Resolução: [tamanho da tela]
+• Controles: [teclado/mouse/touch/gamepad]
+
+📅 CRONOGRAMA DE DESENVOLVIMENTO:
+• Semana 1-2: [definir conceito e design - FEITO!]
+• Semana 3-4: [criar arte básica e sprites]
+• Semana 5-6: [programar mecânicas principais]
+• Semana 7-8: [level design e teste]
+• Semana 9-10: [áudio e polimento]
+• Semana 11-12: [testes finais e lançamento]
+
+🎯 OBJETIVOS DE APRENDIZADO:
+• O que quero aprender: [habilidades específicas]
+• Desafios esperados: [dificuldades que posso enfrentar]
+• Como medir sucesso: [como saberei se deu certo]
+
+📊 MÉTRICAS DE SUCESSO:
+• Para mim: [completar o jogo, aprender X, etc]
+• Para jogadores: [diversão, tempo jogado, etc]
+
+📝 PRÓXIMOS PASSOS:
+1. [primeira ação concreta]
+2. [segunda ação]
+3. [terceira ação]
+
+💭 ANOTAÇÕES EXTRAS:
+[qualquer ideia, preocupação ou inspiração adicional]
+
+---
+📧 FEEDBACK: [deixe espaço para anotações de pessoas que testarem]
+                    </div>
+                    
+                    <button class="btn-copiar" onclick="copiarTexto('template8')">📋 Copiar Template GDD</button>
+                </div>
+            `;
+            
+            mostrarTemplate('Template Aula 8', 'Game Design Document completo', conteudo);
+        }
+        
+        function mostrarExemploGDD() {
+            const conteudo = `
+                <div class="template-section">
+                    <h4>🎮 Exemplo: GDD de um jogo real</h4>
+                    <p><strong>Para inspirar você:</strong> Como seria um GDD na prática</p>
+                    
+                    <div id="exemploGDD" style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin: 10px 0; font-family: monospace;">
+=== EXEMPLO: "COELHO ESPACIAL" - GDD ===
+
+🎮 INFORMAÇÕES BÁSICAS:
+• Nome: Coelho Espacial
+• Gênero: Plataforma + Puzzle
+• Plataforma: Web (HTML5)
+• Público: 8-16 anos
+• Sessão: 15-30 minutos
+
+📖 CONCEITO:
+• Premissa: "Coelho astronauta coleta cenouras em planetas alienígenas"
+• Diferencial: Gravidade muda a cada planeta
+
+⚡ MECÂNICAS:
+• Pular entre plataformas
+• Coletar cenouras (pontos)
+• Evitar aliens (perder vida)
+• Usar jetpack (combustível limitado)
+• Adaptar-se à gravidade diferente
+
+👤 PERSONAGEM:
+• Coby: coelho branco, capacete azul, jetpack
+• Personalidade: curioso e corajoso
+• Silhueta: orelhas longas + capacete redondo
+
+🏗️ NÍVEIS:
+• Planeta 1: Terra (gravidade normal) - tutorial
+• Planeta 2: Lua (gravidade baixa) - pulos altos
+• Planeta 3: Júpiter (gravidade alta) - pulos baixos
+• Progressão: mais aliens e plataformas móveis
+
+🖥️ INTERFACE:
+• Vidas: 3 cenouras (canto superior esquerdo)
+• Pontos: números grandes (centro superior)
+• Combustível: barra azul (direita)
+• Botões: grandes e coloridos
+
+📅 CRONOGRAMA:
+• Semana 1: Arte do coelho e cenários
+• Semana 2: Programar pulo e coleta
+• Semana 3: Criar 3 planetas
+• Semana 4: Aliens e dificuldade
+• Semana 5: Interface e som
+• Semana 6: Testes e ajustes
+
+🎯 META: Completar em 6 semanas, aprender sobre física de jogos
+                    </div>
+                    
+                    <button class="btn-copiar" onclick="copiarTexto('exemploGDD')">📋 Copiar Exemplo</button>
+                </div>
+            `;
+            
+            mostrarTemplate('Exemplo de GDD', 'Veja como fica um GDD real', conteudo);
+        }
+        
+        // Fechar modal ao clicar fora
+        window.onclick = function(event) {
+            const modal = document.getElementById('templateModal');
+            if (event.target == modal) {
+                fecharModal();
+            }
+        }
+        
+        // ===== INICIALIZAÇÃO =====
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎮 Curso de Desenvolvimento de Jogos 2D carregado!');
+            console.log('🤖 Estela pronta para explicar as aulas!');
+            console.log('📊 Total de aulas disponíveis:', Object.keys(audiosEstela).length);
+            console.log('🎵 Controles de áudio: pause, play, velocidade disponíveis!');
+            console.log('📁 Sistema Google Drive: templates e instruções integradas!');
+            
+            // Verificar suporte à síntese de voz
+            if ('speechSynthesis' in window) {
+                console.log('🎤 Síntese de voz disponível como fallback');
+                
+                // Carregar vozes disponíveis
+                window.speechSynthesis.addEventListener('voiceschanged', function() {
+                    const vozes = window.speechSynthesis.getVoices();
+                    console.log('🗣️ Vozes disponíveis:', vozes.length);
+                });
+            } else {
+                console.log('⚠️ Síntese de voz não disponível neste navegador');
+            }
+            
+            console.log('🚀 Tudo pronto! Clique em "Ouvir explicação da Estela" para começar!');
+            console.log('🎛️ Use os controles que aparecem para pausar, continuar e ajustar velocidade!');
+            console.log('📋 Não esqueça de seguir as instruções do Google Drive em cada aula!');
+        });
+        
+        // ===== LIMPEZA AO SAIR DA PÁGINA =====
+        window.addEventListener('beforeunload', function() {
+            pararTodosAudios();
+        });
     </script>
 </body>
 </html>
